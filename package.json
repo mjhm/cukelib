@@ -1,0 +1,32 @@
+{
+  "name": "cucumber-api",
+  "version": "0.1.0",
+  "description": "Cucumber step definitions for API testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjhm/cucumber-api.git"
+  },
+  "keywords": [
+    "cucumber",
+    "lodash-match-pattern"
+  ],
+  "author": "John McLaughlin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjhm/cucumber-api/issues"
+  },
+  "homepage": "https://github.com/mjhm/cucumber-api#readme",
+  "devDependencies": {
+    "cucumber": "^1.0.0",
+    "sinon": "^1.17.4"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "lodash": "^4.13.1",
+    "lodash-match-pattern": "^0.1.7"
+  }
+}

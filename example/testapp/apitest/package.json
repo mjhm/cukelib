@@ -1,0 +1,16 @@
+{
+  "name": "features",
+  "version": "0.0.1",
+  "description": "feature tests for testapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cucumber": "^1.0.0",
+    "cucumber-api": "file:../../../../cucumber-api",
+    "sinon": "^1.17.4"
+  }
+}

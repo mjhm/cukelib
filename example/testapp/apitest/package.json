@@ -11,6 +11,7 @@
   "dependencies": {
     "cucumber": "^1.0.0",
     "cucumber-api": "file:../../../../cucumber-api",
-    "sinon": "^1.17.4"
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0"
   }
 }

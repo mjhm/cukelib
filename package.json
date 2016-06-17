@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/mjhm/cucumber-api#readme",
   "devDependencies": {
-    "cucumber": "^1.0.0",
-    "sinon": "^1.17.4"
+    "cucumber": "^1.0.0"
   },
   "dependencies": {
     "bluebird": "^3.4.0",
     "lodash": "^4.13.1",
-    "lodash-match-pattern": "^0.1.7"
+    "lodash-match-pattern": "^0.1.7",
+    "request-promise": "^3.0.0"
   }
 }

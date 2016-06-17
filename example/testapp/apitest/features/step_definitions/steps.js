@@ -2,7 +2,8 @@
 var cucumberApi = require('../../../../../index.js');
 
 module.exports = function () {
-  cucumberApi.shellSteps.call(this)
+  cucumberApi.steps.shell.call(this);
+  cucumberApi.steps.request.call(this);
 
   var self = this;
   self.Given(/^testa$/, function () {

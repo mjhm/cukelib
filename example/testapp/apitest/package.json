@@ -9,9 +9,10 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
     "cucumber": "^1.0.0",
     "cucumber-api": "file:../../../../cucumber-api",
-    "chai": "^3.5.0",
-    "chai-as-promised": "^5.2.0"
+    "sync-exec": "^0.6.2"
   }
 }

@@ -7,7 +7,7 @@ module.exports = function () {
 
   this.Before( function () {
     cucumberApi.config.call(this, {
-      serverRoot: 'https://www.googleapis.com/youtube/v3'
+      serverRoot: 'http://localhost:8080'
     });
     this.here = 'HERE3';
   });

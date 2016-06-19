@@ -1,5 +1,10 @@
 // var cucumberApi = require('cucumber-api');
+var exec = require('sync-exec')
 var cucumberApi = require('../../../../../index.js');
+
+resetDatabase = function() {
+  exec("../src/serv --reset-db")
+}
 
 module.exports = function () {
   cucumberApi.steps.shell.call(this);
@@ -10,6 +15,8 @@ module.exports = function () {
     console.log('testa self', self);
     console.log('testa this', this);
   });
+
+  self.Then(/^the database is reset$/, resetDatabase);
 
 
   self.Given(/^testb$/, function () {

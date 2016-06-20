@@ -3,7 +3,11 @@ var exec = require('sync-exec')
 var cucumberApi = require('../../../../../index.js');
 
 resetDatabase = function() {
-  exec("../src/serv --reset-db")
+  exec("cp ../src/db/empty.db ../src/db/test.db")
+}
+
+populateDatabase = function() {
+  exec("cp ../src/db/start.db ../src/db/test.db")
 }
 
 module.exports = function () {
@@ -17,6 +21,7 @@ module.exports = function () {
   });
 
   self.Then(/^the database is reset$/, resetDatabase);
+  self.Given(/^the database is populated with sample users$/, populateDatabase)
 
 
   self.Given(/^testb$/, function () {

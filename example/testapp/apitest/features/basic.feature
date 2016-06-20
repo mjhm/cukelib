@@ -77,6 +77,7 @@ Feature: Basic Features for lodash-match-pattern
       """
 
   Scenario: Users are searched correctly
+    Given the database is populated with sample users
     When the client gets "/users?name=alec"
     Then the response had status code "200"
     And the response matched the pattern
@@ -123,6 +124,7 @@ Feature: Basic Features for lodash-match-pattern
         """
 
   Scenario: Users are delted correctly
+    Given the database is populated with sample users
     When the client deletes "/users?id=1"
     Then the response had status code "200"
     And the response matched the pattern

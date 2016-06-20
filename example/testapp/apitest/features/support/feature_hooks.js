@@ -7,7 +7,7 @@ module.exports = function () {
   var self = this;
 
   this.registerHandler('BeforeFeatures', function (event, done) {
-    childProcess.exec("../src/serv")
+    self.serverPID = childProcess.exec("../src/serv")
     /* Start application and database here */
     done()
   });
@@ -15,7 +15,7 @@ module.exports = function () {
 
   this.registerHandler('AfterFeatures', function (event, done) {
     /* Stop application and db teardown here */
-    childProcess.exec("killall serv")
+    self.serverPID.kill()
     done()
   });
 };

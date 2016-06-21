@@ -3,17 +3,17 @@
 * The following is a sample app that uses the cucumber-api integration testing framework
   * It includes a small user database that stores users names, ages, and unique ids
 
-## Building
-* Please make sure that you have `go` installed with at least version `1.0` or greater.
-(version `1.6` or newer is recommended)
-* You will also need a c compiler installed on your path to compile the sqlite code.
-* To compile, run `cd src`
-* Then, run `make` (if you don't have `make` then just run `go build -o serv`)
+## Requirements
+* [`go` version >1.6](https://golang.org/doc/install)
+* C compiler (to compile the sqlite driver)
+* [Node version >4.0](https://nodejs.org)
+* [make](https://www.gnu.org/software/make/#download)
 
-## Testing
-* Once you build the binary, `cd example/testapp/apitest`
-* run `npm i`
-* run `node_modules/.bin/cucumberjs`
+## Building, Running, Testing
+* `cd src`
+* `make` (or `make serv`) compiles.
+* `make run` -- launches the server on localhost
+* `make test` -- installs node modules and runs the cucumber features in `../apitest`
 
 ## Routes
   * GET `/users` will return a json array of all users

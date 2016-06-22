@@ -4,9 +4,9 @@ package user
 
 // a simple Users which has simple fields
 type User struct {
-	Id   int64 //unique identifier from the database
-	Name string
-	Age  int
+	Id   int64  `json:"id"` //unique identifier from the database
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
 func NewUser(name string, age int) User {

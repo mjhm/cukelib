@@ -16,7 +16,7 @@ func OpenDB(filename string) (*sql.DB, error) {
 // CommitUser commits the given user to the given database.
 // No santization of inputs is used, be warned.
 func CommitUser(db *sql.DB, user *user.User) error {
-	stmt, err := db.Prepare("insert into users values(NULL,?,?)")
+	stmt, err := db.Prepare("INSERT INTO users VALUES(NULL,?,?)")
 	if err != nil {
 		return err
 	}
@@ -41,7 +41,7 @@ func CreateSkelDB(filename string) error {
 	defer db.Close()
 
 	sqlStmt := `
-  create table users (
+  CREATE TABLE users (
     id integer primary key,
     name text not null,
     age integer
@@ -66,9 +66,9 @@ func CreateSkelDB(filename string) error {
 // No santization of inputs is used, be warned.
 func FindUsersBy(db *sql.DB, filters map[string]string) ([]user.User, error) {
 	var retSlice []user.User
-	sqlStmt := "select * from users "
+	sqlStmt := "SELECT * FROM users "
 	if len(filters) > 0 {
-		sqlStmt += "where "
+		sqlStmt += "WHERE "
 		for key, val := range filters {
 			sqlStmt += key + "="
 			if key == "name" {
@@ -76,7 +76,7 @@ func FindUsersBy(db *sql.DB, filters map[string]string) ([]user.User, error) {
 			} else {
 				sqlStmt += val
 			}
-			sqlStmt += " and "
+			sqlStmt += " AND "
 		}
 		sqlStmt = sqlStmt[:len(sqlStmt)-4]
 	}
@@ -102,7 +102,7 @@ func FindUsersBy(db *sql.DB, filters map[string]string) ([]user.User, error) {
 // It returns error on database error (like no such user with given id).
 // Otherwise, it returns the number of users deleted.
 func DeleteUser(db *sql.DB, id int) (int64, error) {
-	sqlStmt := "DELETE from users where id=" + strconv.Itoa(id)
+	sqlStmt := "DELETE FROM users WHERE id=" + strconv.Itoa(id)
 	res, err := db.Exec(sqlStmt)
 	if err != nil {
 		return 0, err

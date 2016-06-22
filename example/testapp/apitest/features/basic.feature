@@ -28,7 +28,7 @@ Feature: Basic Features for lodash-match-pattern
     Given the client gets "/"
     Then the response had status code "404"
 
-  Scenario: Check create and retrieve users
+  Scenario: Check create users
     Given the database is reset
     And the client gets "/users"
     Then the response had status code "200"
@@ -58,6 +58,8 @@ Feature: Basic Features for lodash-match-pattern
       """
     Then the response had status code "200"
 
+  Scenario: Check retrieve Users
+    Give the database is populated with sample users
     When the client gets "/users"
     Then the response had status code "200"
     And the response matched the pattern
@@ -76,7 +78,7 @@ Feature: Basic Features for lodash-match-pattern
       ]
       """
 
-  Scenario: Users are searched correctly
+  Scenario: Check search users
     Given the database is populated with sample users
     When the client gets "/users?name=alec"
     Then the response had status code "200"
@@ -123,7 +125,7 @@ Feature: Basic Features for lodash-match-pattern
           []
         """
 
-  Scenario: Users are delted correctly
+  Scenario: Users are deleted correctly
     Given the database is populated with sample users
     When the client deletes "/users?id=1"
     Then the response had status code "200"

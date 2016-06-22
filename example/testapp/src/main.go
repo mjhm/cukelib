@@ -20,16 +20,23 @@ func sayHello(w http.ResponseWriter, r *http.Request) {
 
 // Giving main a flag of '--create' will simply create a skeleton database and exit
 func main() {
+	port := "3000"
 	dbPath := getDBFilepath()
-	fmt.Println(dbPath)
-	if len(os.Args) > 1 && os.Args[1] == "--reset-db" {
-		os.Remove(dbPath)
-		err := db.CreateSkelDB(dbPath)
-		if err != nil {
-			fmt.Println(err)
+	if len(os.Args) > 1 {
+		if os.Args[1] == "--reset-db" {
+			os.Remove(dbPath)
+			err := db.CreateSkelDB(dbPath)
+			if err != nil {
+				fmt.Println(err)
+			}
+			return
 		}
-		return
+		if os.Args[1] == "--port" {
+			port = os.Args[2]
+		}
 	}
+
+	portString := ":" + port
 
 	dbase, err := db.OpenDB(dbPath)
 	setGlobalDatabase(dbase)
@@ -39,7 +46,8 @@ func main() {
 	}
 
 	http.HandleFunc("/users", handleUser)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	fmt.Println("Server is listening on port: " + port)
+	log.Fatal(http.ListenAndServe(portString, nil))
 }
 
 func setGlobalDatabase(d *sql.DB) {

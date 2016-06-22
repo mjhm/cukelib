@@ -14,6 +14,7 @@
 * `make` (or `make serv`) compiles.
 * `make run` -- launches the server on localhost
 * `make test` -- installs node modules and runs the cucumber features in `../apitest`
+  * Note: the server defaults to port 3000, however, you can give the server an different port by specifying an option at the command line like so: `./serv --port 8080` and modifying the port in `support/scenario_hooks.js`
 
 ## Routes
   * GET `/users` will return a json array of all users

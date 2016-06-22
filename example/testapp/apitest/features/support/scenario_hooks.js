@@ -8,7 +8,7 @@ module.exports = function () {
 
   this.Before( function () {
     cucumberApi.config.call(this, {
-      serverRoot: 'http://localhost:8080',
+      serverRoot: 'http://localhost:3000',
       db: {
         client: 'sqlite3',
         connection: {

@@ -21,6 +21,7 @@ func sayHello(w http.ResponseWriter, r *http.Request) {
 // Giving main a flag of '--create' will simply create a skeleton database and exit
 func main() {
 	dbPath := getDBFilepath()
+	fmt.Println(dbPath)
 	if len(os.Args) > 1 && os.Args[1] == "--reset-db" {
 		os.Remove(dbPath)
 		err := db.CreateSkelDB(dbPath)

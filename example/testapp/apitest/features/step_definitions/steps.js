@@ -13,6 +13,7 @@ populateDatabase = function() {
 module.exports = function () {
   cucumberApi.steps.shell.call(this);
   cucumberApi.steps.request.call(this);
+  cucumberApi.steps.db.call(this);
 
   var self = this;
   self.Given(/^testa$/, function () {

@@ -154,3 +154,28 @@ Feature: Basic Features for lodash-match-pattern
           }
         ]
      """
+
+  Scenario: Db check
+    Given the client posts to "/users" with JSON
+      """
+      {
+        "name": "davy",
+        "age": 47
+      }
+      """
+    And the SQL query
+      """
+      SELECT * from users
+      """
+    Then the query result matched the pattern
+      """
+      {
+        <-.sortBy|id: {
+          <-.last: {
+            name: 'davy',
+            age: 47,
+            ...
+          }
+        }
+      }
+      """

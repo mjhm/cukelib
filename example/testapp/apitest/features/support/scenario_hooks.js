@@ -13,7 +13,8 @@ module.exports = function () {
         client: 'sqlite3',
         connection: {
           filename: path.join(__dirname, '/../../../src/db/test.db')
-        }
+        },
+        useNullAsDefault: true
       }
     });
   });

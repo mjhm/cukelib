@@ -4,12 +4,15 @@ var Promise = require('bluebird');
 var childProcess = Promise.promisifyAll(require('child_process'), {multiArgs: true});
 var portUsed = require('tcp-port-used');
 
-waitForStartup = function (done) {
+var waitForStartup = function (timeout, done) {
+  if (timeout < 0) {
+    throw new Error('waitForStartup timeout');
+  }
   portUsed.check(3000, "localhost")
   .then(function(inUse) {
     if (inUse) return done();
     setTimeout(function () {
-      waitForStartup(done);
+      waitForStartup(timeout - 50, done);
     }, 50);
   })
   .catch( function (err) {
@@ -23,15 +26,15 @@ module.exports = function () {
   var self = this;
 
   this.registerHandler('BeforeFeatures', function (event, done) {
-    self.serverPID = childProcess.exec("../src/serv")
+    self.serverPID = childProcess.exec("../src/serv");
     /* Start application and database here */
-    waitForStartup(done);
+    waitForStartup(2000, done);
   });
 
 
   this.registerHandler('AfterFeatures', function (event, done) {
     /* Stop application and db teardown here */
-    self.serverPID.kill()
+    self.serverPID.kill();
     done()
   });
 };

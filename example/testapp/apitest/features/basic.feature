@@ -1,4 +1,7 @@
-Feature: Basic Features for lodash-match-pattern
+Feature: Basic Features of lodash-match-pattern for testing API endpoints and headers
+
+  Background:
+    The database is seeded with basic info
 
   Scenario: Check shell steps
     When this shell script runs

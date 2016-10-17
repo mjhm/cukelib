@@ -1,7 +1,7 @@
 
 module.exports = {
-  hooks: require('./hooks'),
-  // requestSteps: require('./lib/request_steps'),
+  hooks: require('./lib/hooks'),
+  requestSteps: require('./lib/request_steps'),
 };
 
 

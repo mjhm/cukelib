@@ -4,7 +4,7 @@
   "description": "Cucumber step definitions for API testing",
   "main": "index.js",
   "scripts": {
-    "test": "(cd ./example/harness; npm test)"
+    "test": "(cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test)"
   },
   "repository": {
     "type": "git",

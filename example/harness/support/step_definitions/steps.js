@@ -2,9 +2,8 @@
 var {requestSteps} = require('cucumber-api')
 
 module.exports = function () {
-
-  this.Given(/^(GET|PUT|POST|DELETE) "([^"]*)"$/, function (method, route, dataOrDone) {
-    requestSteps[method](route, dataOrDone)
+  this.Given(/this is a step/, () => {
+    console.log('HELLO STEP');
   });
-
+  requestSteps.call(this);
 }

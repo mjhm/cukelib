@@ -4,8 +4,8 @@
   "description": "Example cucumber-api test harness for example app",
   "main": "index.js",
   "scripts": {
-    "test": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs",
-    "server": "NODE_ENV=test SERVER_PORT=3001 node ../app/server.js"
+    "test": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require support",
+    "start": "NODE_ENV=test SERVER_PORT=3001 node ../app/server.js"
   },
   "author": "John McLaughlin",
   "license": "MIT",

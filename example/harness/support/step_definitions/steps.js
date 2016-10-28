@@ -1,9 +1,14 @@
 
-var {requestSteps} = require('cucumber-api')
+const {
+  diagnosticSteps,
+  contextSteps,
+  shellSteps,
+  requestSteps,
+} = require('cucumber-api');
 
 module.exports = function () {
-  this.Given(/this is a step/, () => {
-    console.log('HELLO STEP');
-  });
+  diagnosticSteps.call(this);
+  contextSteps.call(this);
+  shellSteps.call(this);
   requestSteps.call(this);
-}
+};

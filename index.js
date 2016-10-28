@@ -1,6 +1,10 @@
+/* eslint global-require: "off"*/
 
 module.exports = {
   hooks: require('./lib/hooks'),
+  diagnosticSteps: require('./lib/diagnostic_steps'),
+  contextSteps: require('./lib/context_steps'),
+  shellSteps: require('./lib/shell_steps'),
   requestSteps: require('./lib/request_steps'),
 };
 

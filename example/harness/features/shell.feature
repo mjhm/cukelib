@@ -23,6 +23,7 @@ Feature: Shell execution tests
       exit 47
       """
     Then shell error code was "47"
+    Then shell error code was "0" ... Not!
 
   Scenario: Match output by a regex
     When shell script runs

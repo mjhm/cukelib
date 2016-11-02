@@ -15,3 +15,7 @@ Feature: Context variable tests
     Then "myStringKey" was "myValue"... not!
     Then "myStringKey" was "myValue" not!
     Then "myStringKey" was "myValue".   Not!
+
+  Scenario: Reserved words throw
+    When "shell" is "nautilus" Throws
+    When "request" is (9) Throws

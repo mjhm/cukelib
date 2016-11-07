@@ -1,6 +1,7 @@
 /* eslint global-require: "off"*/
+const EventEmitter = require('events');
 const _ = require('lodash');
-const { notStep } = require('./lib/util');
+const { createNotStep } = require('./lib/util');
 
 const hooks = require('./lib/hooks');
 
@@ -11,36 +12,43 @@ const stepsDict = {
   requestSteps: require('./lib/request_steps'),
 };
 
-const allSteps = function () {
-  // Monkey patch this.Then so that it creates extra "...Not!' steps.
+const initStepCreationEvents = function () {
+  if (this.cucapiEmitter) return;
+  this.cucapiEmitter = new EventEmitter();
+
   const origThen = this.Then;
   this.Then = function (...args) {
-    const re = args[0];
-    const fn = args[args.length - 1];
-    if (!(re instanceof RegExp) || typeof fn !== 'function') {
-      origThen.apply(this, args);
-      return;
-    }
-    const notTailRe = /[\.\s]+[Nn]ot!$/;
-    const notArgs = args.slice(0);
-    let notRe;
-    if (re.source[re.source.length - 1] === '$') {
-      // if regex ends in '$' just splice in the notTailRe for the "...Not!' step.
-      origThen.apply(this, args);
-      notRe = new RegExp(re.source.slice(0, -1) + notTailRe.source);
-    } else {
-      // otherwise the original step needs to be altered to distinguish from the "...Not!" step
-      const newArgs = args.slice(0);
-      newArgs[0] = new RegExp(re.source + /(?:|.*[^!])$/.source);
-      origThen.apply(this, newArgs);
-      notRe = new RegExp(re.source + /.*/.source + notTailRe.source);
-    }
-    notArgs[0] = notRe;
-    notArgs[notArgs.length - 1] = notStep(fn);
-    origThen.apply(this, notArgs);
+    origThen.apply(this, args);
+    this.cucapiEmitter.emit('thenEvent', this, origThen, ...args);
   };
-  // Add all the steps
-  _.forIn(stepsDict, v => v.call(this));
+
+  const origGiven = this.Given;
+  this.Given = function (...args) {
+    origGiven.apply(this, args);
+    this.cucapiEmitter.emit('givenEvent', this, origGiven, ...args);
+  };
+
+  const origWhen = this.When;
+  this.When = function (...args) {
+    origWhen.apply(this, args);
+    this.cucapiEmitter.emit('whenEvent', this, origWhen, ...args);
+  };
 };
 
-module.exports = Object.assign({ hooks, allSteps }, stepsDict);
+const notThenSteps = function (stepDefinitionFn) {
+  return function () {
+    initStepCreationEvents.call(this);
+    this.cucapiEmitter.on('thenEvent', createNotStep);
+    stepDefinitionFn.call(this);
+    this.cucapiEmitter.removeListener('thenEvent', createNotStep);
+  };
+};
+
+const allSteps = notThenSteps(function () {
+  _.forIn(stepsDict, v => v.call(this));
+});
+
+module.exports = Object.assign(
+  { hooks, initStepCreationEvents, notThenSteps, allSteps },
+  stepsDict
+);

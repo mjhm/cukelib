@@ -34,6 +34,7 @@
     "handlebars": "^4.0.5",
     "lodash": "^4.13.1",
     "lodash-match-pattern": "^1.1.0",
+    "randexp": "^0.4.3",
     "request": "^2.75.0",
     "request-promise": "^4.1.1"
   }

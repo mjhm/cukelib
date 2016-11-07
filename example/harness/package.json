@@ -9,7 +9,7 @@
   },
   "author": "John McLaughlin",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "bluebird": "^3.4.6",
     "cucumber": "^1.3.1",
     "lodash": "^4.16.4",

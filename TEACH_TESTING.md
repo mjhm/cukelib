@@ -1,8 +1,26 @@
 # Universities, Please Teach Testing before Types
 
-So here's my complaint. At Originate I interview several candidates per month for entry level and intern programming positions. From their resume, a short online test, and about 40 minutes of watching them program, I need to assess whether they have the skills to thrive at Originate. For the programming assessments I let candidates program in their favored language. When they choose Java I know that the interview is going to take at least 5 minutes longer as the candidate fusses over type trivialities rather than core algorithm tasks. Python choosers get to the point fastest, and those with JavaScript can be poor or excellent. No matter which language when the candidate gets through everything else, I ask a specific question about how to write a test for their code. Good senior developers get it immediately, often with useful variations. Entry level and interns -- never.
+Even if I stumble on to the absolute truth of any aspect of the universe, I will not realise my luck and instead will spend my life trying to find flaws in this understanding - such is the role of a scientist. Brian Schmidt
 
-The craft of modern professional programming (Bob Martin ref) requires continuous integration and constant refactoring.  Indeed "deliver working software frequently" and welcoming change are cornerstones of the Agile Manifesto. Delivering working software requires testing, and delivering it frequently while welcoming change requires that testing is automated. In other words automated testing isn't so much about software reliability but rather automated testing is a requirement for the pace of agile development. Unfortunately under even the best circumstances it takes years for developers to gain the experience and instincts for effective testing, and unfortunately CS graduates are not gaining these instincts in school. Indeed it's more likely that a graduate will be able to explain covariance than know when to stub a dependency. The result is a glut of mediocre software developers who can only work in waterfall (or cargo-cult agile) environments where the attitude toward testing is to throw it over the fence to a QA department.
+So here's my complaint. At Originate I interview several candidates per month for entry level and intern programming positions. From their resume, a short online test, and about 40 minutes of watching them program, I need to assess whether they have the skills to thrive at Originate. As a final hurdle I ask a simple specific question about how to write a test for their code. Good senior developers get it immediately, often with useful variations. Entry level and interns -- almost never.
+
+This blog post is about "absolute truth" in software development and by that I mean "testable" truth. Software development is the scientific method through a fun house mirror. In science we take a hypothesis about the universe, we test the hypothesis, and if the test fails we change our hypothesis and run a new test. Software development is way more fun, we still have a hypothesis and a universe, but when the test fails, we keep our hypothesis (aka requirement), and invoke our god-like power to change the universe (aka program). That's cool, but it gets even better, as I change my universe to fit today's hypothesis what happens to yesterday's hypothesis? If I've done my job right, I've saved yesterday's test, and can automatically run it to verify my previous edicts still hold. Eventually I've built a universe surrounded by tests that prove that it behaves exactly as I say it should. Then I can even become more bold and destroy and recreate worlds (aka refactor) within my universe and still be sure that my universe obeys my will.
+
+My power trip depends on "automated tests". Every software developer verifies their software in one way or another, most often by just manually running it and checking the results. Such manual tests only establish absolute truth at a mere mortal's fleeting instant in time. Automated tests give the god-like power of controlling a universe. So from now on we are gods and "test" means "automated test".
+
+Now back on planet earth -- the craft of modern professional programming requires [continuous integration[(http://martinfowler.com/articles/continuousIntegration.html) and [constant refactoring](https://www.agilealliance.org/glossary/refactoring/).  Indeed "deliver working software frequently" and welcoming change are cornerstones of the [Agile Manifesto](http://agilemanifesto.org/principles.html). Delivering working software requires testing, and delivering it frequently while welcoming change requires that testing is automated. In other words automated testing isn't so much about software reliability but rather automated testing is a requirement for the pace of agile development. Unfortunately under even the best circumstances it takes years for developers to gain the experience, instincts, and self-critical thinking for effective testing, and unfortunately CS graduates are not gaining these instincts in school. Indeed it's more likely that a graduate will be able to explain covariance than know when to stub a dependency. The result is a glut of mediocre software developers who work in waterfall (or cargo-cult agile) environments where the attitude toward testing is to throw it over the fence to a QA department.
+
+Testing is hard because it doesn't come for free -- there are development costs, maintenance costs, and operational costs. As shown below there are some tests which are no-brainers to implement -- static analysis is very useful and costs next to nothing, and unit tests are generally pretty easy. And then there are tests which are clearly too difficult to be worth much effort -- such as HTML/CSS display details.
+
+The developer's challenge is to create an environment where the testing costs can be reduced. Then more of the tests will land on the "Worth Testing" side of the graph -- especially the high value tests.
+
+Furthermore the constellation of tests on this graph varies from project to pr
+
+
+
+Testing Cost/Benefit
+
+What makes testing most challenging is that writing tests come with a cost and unfortunately the cost doesn't always outweigh the benefit.
 
 How to fix this? I've got two suggestions -- first an attitude adjustment, and a crazy curriculum change.
 
@@ -60,3 +78,15 @@ When not to test.
 2. One-off single use scripts
 3. Code with trivial failure consequences.
 4. Highly volatile proof-of-concept code.
+
+
+-----------------
+
+Blind faith, no matter how passionately expressed, will not suffice. Science for its part will test relentlessly every assumption about the human condition. E. O. Wilson
+
+I value challenging assumptions, and I also value absolute truth when it can be found. Isn't critical thinking what separates a university eduction from a trade school.
+
+I value the democratization of coding. I value programming craftsmanship. I value challenging assumptions and identifying and holding to truth when it can be found.
+
+
+For the programming assessments I let candidates program in their favored language. When they choose Java I know that the interview is going to take at least 5 minutes longer as the candidate fusses over type trivialities rather than core algorithm tasks. Python choosers get to the point fastest, and those with JavaScript can be poor or excellent. Regardless of language, when the candidate gets through everything else, I ask a specific question about how to write a test for their code. Good senior developers get it immediately, often with useful variations. Entry level and interns -- almost never.

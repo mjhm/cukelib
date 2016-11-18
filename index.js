@@ -10,6 +10,7 @@ const stepsDict = {
   contextSteps: require('./lib/context_steps'),
   shellSteps: require('./lib/shell_steps'),
   requestSteps: require('./lib/request_steps'),
+  responseSteps: require('./lib/response_steps'),
 };
 
 const initStepCreationEvents = function () {

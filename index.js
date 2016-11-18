@@ -1,7 +1,7 @@
 /* eslint global-require: "off"*/
 const EventEmitter = require('events');
 const _ = require('lodash');
-const { createNotStep, createThrowStep } = require('./lib/util');
+const { createNotStep, createThrowStep } = require('./lib/util/step_mods');
 
 const hooks = require('./lib/hooks');
 
@@ -45,7 +45,7 @@ const notThenSteps = function (stepDefinitionFn) {
 };
 
 const allSteps = notThenSteps(function () {
-  _.forIn(stepsDict, v => v.call(this));
+  _.forIn(stepsDict, (v) => v.call(this));
 });
 
 module.exports = Object.assign(

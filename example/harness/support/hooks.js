@@ -1,8 +1,10 @@
 /* eslint import/no-unresolved: off */
 const { hooks } = require('cucumber-api');
 
-
-
 module.exports = function () {
-  hooks.resetScenarioEnvironment.call(this);
+  hooks.initCucumberApi.call(this);
+  hooks.requestInit.call(this, { host: 'localhost:3000' });
+  this.registerHandler('BeforeFeatures', function () {
+    return hooks.spawnServer.call(this, { host: 'localhost:3000' });
+  });
 };

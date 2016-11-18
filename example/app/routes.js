@@ -1,4 +1,4 @@
 // routes.js
-module.exports = ({resources}) => {
+module.exports = ({ resources }) => {
   resources('users');
 };

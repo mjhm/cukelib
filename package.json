@@ -4,7 +4,10 @@
   "description": "Cucumber step definitions for API testing",
   "main": "index.js",
   "scripts": {
-    "test": "(cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test)"
+    "spec": "./node_modules/.bin/mocha \"lib/**/*_spec.js\" \"example/app/**/*_spec.js\" \"example/harness/**/*_spec.js\"",
+    "lint": "./node_modules/.bin/eslint --config .eslintrc.js index.js lib example/app example/harness",
+    "features": "(cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test)",
+    "test": "npm run lint; npm run spec; npm run features"
   },
   "repository": {
     "type": "git",
@@ -32,10 +35,13 @@
   },
   "dependencies": {
     "bluebird": "^3.4.0",
+    "body-parser": "^1.15.2",
     "chai": "^3.5.0",
+    "express": "^4.14.0",
     "handlebars": "^4.0.5",
     "lodash": "^4.13.1",
     "lodash-match-pattern": "^1.1.0",
+    "minimist": "^1.2.0",
     "randexp": "^0.4.3",
     "request": "^2.75.0",
     "request-promise": "^4.1.1"

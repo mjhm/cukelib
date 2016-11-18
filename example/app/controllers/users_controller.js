@@ -1,10 +1,8 @@
 
-var UserService = require('../service/user');
 
 module.exports = class UsersController {
 
-  index(req, res) {
-    console.log('req', req);
+  static index(req, res) {
     res.json([{
       id: 1,
       name: 'Pat',
@@ -12,11 +10,11 @@ module.exports = class UsersController {
       worth: 0.78,
       friends: [],
       createdAt: new Date(),
-      modifiedAt: new Date()
+      modifiedAt: new Date(),
     }]);
   }
 
-  show(req, res) {
+  static show(req, res) {
     res.send('hello world show');
   }
-}
+};

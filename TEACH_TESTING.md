@@ -12,6 +12,8 @@ Now back on planet earth -- the craft of modern professional programming require
 
 Testing is hard because it doesn't come for free -- there are development costs, maintenance costs, and operational costs. As shown below there are some tests which are no-brainers to implement -- static analysis is very useful and costs next to nothing, and unit tests are generally pretty easy. And then there are tests which are clearly too difficult to be worth much effort -- such as HTML/CSS display details.
 
+Testing is also hard because it takes courage. Both the courage to be hyper critical of your own code, and later the courage to delete tests that no longer serve a useful function. And the courage to admit what you don't know and learn to do better.
+
 The developer's challenge is to create an environment where the testing costs can be reduced. Then more of the tests will land on the "Worth Testing" side of the graph -- especially the high value tests.
 
 Furthermore the constellation of tests on this graph varies from project to pr

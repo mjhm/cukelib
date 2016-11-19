@@ -1,11 +1,11 @@
-Feature: HTTP Requests sent to the default echo server
+Feature: HTTP Requests sent to the "echo_server" -- happy paths
 
   Scenario: A basic GET call
     Given GET "/users"
     Then responded with status code "200"
 
 
-  Scenario: A basic PUT call
+  Scenario: A basic PUT call matches a lodash-match-pattern
     Given PUT "/losers"
       """
       [
@@ -18,10 +18,6 @@ Feature: HTTP Requests sent to the default echo server
       """
       [
         _.isString,
-        /\w+\s\w+/
+        /B\w+\sB\w+/
       ]
       """
-
-  Scenario: A basic GET call with 401 status code
-    Given GET "/users?statusCode=401"
-    Then responded with status code "402"... Throws!

@@ -45,6 +45,7 @@
     "chai-as-promised": "^6.0.0",
     "express": "^4.14.0",
     "handlebars": "^4.0.5",
+    "knex": "^0.12.6",
     "lodash": "^4.13.1",
     "lodash-match-pattern": "^1.1.0",
     "minimist": "^1.2.0",

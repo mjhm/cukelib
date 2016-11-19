@@ -1,4 +1,4 @@
-Feature: Shell execution tests
+Feature: Shell execution tests -- happy paths
 
   Scenario: test the output of a shell script
     When shell script runs

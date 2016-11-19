@@ -6,7 +6,8 @@
   "scripts": {
     "spec": "./node_modules/.bin/mocha \"lib/**/*_spec.js\" \"example/app/**/*_spec.js\" \"example/harness/**/*_spec.js\"",
     "lint": "./node_modules/.bin/eslint --config .eslintrc.js index.js lib example/app example/harness",
-    "features": "cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test",
+    "example_features": "cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test",
+    "features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support",
     "test": "npm run lint; npm run spec; npm run features"
   },
   "repository": {

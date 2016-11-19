@@ -1,4 +1,4 @@
-const { initStepCreationEvents, createThrowStep } = require('cucumber-api');
+const { initStepCreationEvents, createThrowStep } = require('../');
 // const { AssertionError } = require('chai');
 
 module.exports = {

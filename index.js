@@ -4,6 +4,7 @@ const _ = require('lodash');
 const { createNotStep, createThrowStep } = require('./lib/util/step_mods');
 
 const hooks = require('./lib/hooks');
+const contextSupport = require('./lib/context_support');
 
 const stepsDict = {
   diagnosticSteps: require('./lib/diagnostic_steps'),
@@ -11,6 +12,7 @@ const stepsDict = {
   shellSteps: require('./lib/shell_steps'),
   requestSteps: require('./lib/request_steps'),
   responseSteps: require('./lib/response_steps'),
+  dbSteps: require('./lib/db_steps'),
 };
 
 const initStepCreationEvents = function () {
@@ -51,5 +53,6 @@ const allSteps = notThenSteps(function () {
 
 module.exports = Object.assign(
   { hooks, initStepCreationEvents, notThenSteps, createThrowStep, allSteps },
+  { contextSet: contextSupport.set, contextGet: contextSupport.get },
   stepsDict
 );

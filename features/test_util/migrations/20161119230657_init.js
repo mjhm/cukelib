@@ -6,7 +6,7 @@ exports.up = function (knex) {
     knex.schema.createTable('users', (table) => {
       table.increments('id');
       table.string('name').notNullable();
-      table.float('access_count').defaultTo(0).notNullable();
+      table.integer('access_count').defaultTo(0).notNullable();
       table.timestamps(true, true);
     }),
     knex.schema.createTable('friend_map', (table) => {

@@ -6,7 +6,7 @@ This is toolbox of Cucumber "steps" and "hooks" for testing API's in Cucumber. T
 2. HTTP server requests and responses
 3. Independent SQL database manipulation (via knex)
 4. Steps for running shell and testing scripts
-5. Get/Set access to namespaces in the cucumber "world"
+5. [Get/Set access to namespaces in the cucumber "world"](UNIVERSE.md)
 
 All of these facilities are decoupled as much as possible, so you can take what you like and leave the rest. Contributions are of course welcome.
 
@@ -20,4 +20,12 @@ For the purposes of getting you started with testing quickly, I've made some non
 # [Postfix "... Not!"]https://en.wikipedia.org/wiki/..._Not!) steps. The module includes a tool for creating a logical opposite assertion step from a given assertion step. The step definition is the same as the original with a suffix of '... Not!'. This is to be read out loud as if from [Wayne's World](https://youtu.be/BustEdWyqzk?t=2m34s).
 
 
-This is Cucumber JS step definitions for API testing
+
+## Testing the repo
+
+```
+npm install
+(cd example/app; npm install)
+(cd example/harness; npm install)
+npm test
+```

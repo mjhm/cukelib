@@ -7,8 +7,12 @@
     "spec": "./node_modules/.bin/mocha \"lib/**/*_spec.js\" \"example/app/**/*_spec.js\" \"example/harness/**/*_spec.js\"",
     "lint": "./node_modules/.bin/eslint --config .eslintrc.js index.js lib example/app example/harness",
     "example_features": "cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test",
-    "features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support",
-    "test": "npm run lint; npm run spec; npm run features"
+    "happy_features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support features/happy",
+    "sad_features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support features/sad",
+    "universe_features": "./node_modules/.bin/cucumberjs --require lib/universe/features lib/universe/features",
+    "feature": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require lib/universe/features --require features/support",
+    "all_features": "npm run happy_features; npm run sad_features; npm run universe_features",
+    "test": "npm run lint; npm run spec; npm run all_features"
   },
   "repository": {
     "type": "git",

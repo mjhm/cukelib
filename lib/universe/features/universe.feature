@@ -1,5 +1,6 @@
 Feature: Tests of the Universe functionality.
-  See step internal_universe_test.js for detailed expectations.
+  Through internal_universe_test.js this tests the Universe functionality within the life cycle
+  of a test run. See that file for detailed expectations.
 
   @InternalUniverseTest
   Scenario: Getting and setting of universe and world values.

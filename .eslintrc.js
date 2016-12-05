@@ -6,7 +6,8 @@ module.exports = {
       "new-cap": ["error", { "capIsNewExceptions": ["Given", "Then", "And", "When", "But", "Before", "After"] }],
       "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/harness/support/**"]}],
       "no-underscore-dangle": ["error", { "allow": ["_cucapi"] }],
-      "arrow-parens": ["error", "always"]
+      "arrow-parens": ["error", "always"],
+      "comma-dangle": ["off"]
     },
     "installedESLint": true,
     "plugins": [

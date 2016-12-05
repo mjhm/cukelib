@@ -10,8 +10,11 @@
     "happy_features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support features/happy",
     "sad_features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support features/sad",
     "universe_features": "./node_modules/.bin/cucumberjs --require lib/universe/features lib/universe/features",
-    "feature": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require lib/universe/features --require features/support",
-    "all_features": "npm run happy_features; npm run sad_features; npm run universe_features",
+    "server_feature": "./node_modules/.bin/cucumberjs --require lib/server_control/features",
+    "init_server_features": "mkdir -p tmp; touch tmp/nothing; rm tmp/*",
+    "server_features": "npm run init_server_features; find lib/server_control/features -name *.feature -exec npm run server_feature {} ';'; npm run check_server_features",
+    "check_server_features": "./lib/server_control/features/check_server_features.js",
+    "all_features": "npm run happy_features; npm run sad_features; npm run universe_features; npm run server_features",
     "test": "npm run lint; npm run spec; npm run all_features"
   },
   "repository": {
@@ -35,12 +38,14 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "cucumber": "^1.3.1",
-    "eslint": "^3.9.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-import": "^1.16.0",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.5.0",
+    "eslint-plugin-react": "^6.7.1",
+    "http-proxy": "^1.15.2",
     "mocha": "^3.1.2",
+    "ps-node": "^0.1.4",
     "sqlite3": "^3.1.8"
   },
   "dependencies": {

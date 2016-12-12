@@ -79,7 +79,12 @@ When not to test.
 1. Purely declarative view code.
 2. One-off single use scripts
 3. Code with trivial failure consequences.
-4. Highly volatile proof-of-concept code.
+4. Highly volatile code. proof-of-concept code.
+
+Right time to test. When you think the code works, and before moving on to a different module. Think of it as documenting the code for yourself. You don't want to come back to the code with too many WTF moments.
+
+
+
 
 
 -----------------

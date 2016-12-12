@@ -6,6 +6,7 @@ Feature: Basic tests of server spawning and killing
     Then check server "localhost:3002"
     Then check server "localhost:3003"
     Then check server "localhost:3004"
+    Then check embedded server "localhost:3005"
 
   Scenario: Second Scenario
     Given spawn server
@@ -13,3 +14,4 @@ Feature: Basic tests of server spawning and killing
     Then check server "localhost:3002"
     Then check server "localhost:3003"
     Then check server "localhost:3004"
+    Then check embedded server "localhost:3005"

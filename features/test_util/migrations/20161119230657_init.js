@@ -1,7 +1,6 @@
 const Promise = require('bluebird');
 
 exports.up = function (knex) {
-  console.log('migrations up');
   return Promise.all([
     knex.schema.createTable('users', (table) => {
       table.increments('id');
@@ -19,7 +18,6 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  console.log('migrations down');
   return Promise.all([
     knex.schema.dropTable('users'),
     knex.schema.dropTable('friend_map'),

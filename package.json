@@ -10,10 +10,10 @@
     "happy_features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support features/happy",
     "sad_features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support features/sad",
     "universe_features": "./node_modules/.bin/cucumberjs --require lib/universe/features lib/universe/features",
-    "server_feature": "./node_modules/.bin/cucumberjs --require lib/server_control/features",
+    "server_feature": "./node_modules/.bin/cucumberjs --require lib/service_control/features",
     "init_server_features": "mkdir -p tmp; touch tmp/nothing; rm tmp/*",
-    "server_features": "npm run init_server_features; find lib/server_control/features -name *.feature -exec npm run server_feature {} ';'; npm run check_server_features",
-    "check_server_features": "./lib/server_control/features/check_server_features.js",
+    "server_features": "npm run init_server_features; find lib/service_control/features -name *.feature -exec npm run server_feature {} ';'; npm run check_server_features",
+    "check_server_features": "./lib/service_control/features/check_server_features.js",
     "all_features": "npm run happy_features; npm run sad_features; npm run universe_features; npm run server_features",
     "test": "npm run lint; npm run spec; npm run all_features"
   },

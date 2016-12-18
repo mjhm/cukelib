@@ -1,4 +1,4 @@
-Feature: Context variable tests -- sad paths
+Feature: Cuke Context variable tests -- sad paths
 
   Scenario: Reserved words throw
     When "shell" is "nautilus" Throws!

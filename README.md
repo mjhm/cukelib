@@ -32,6 +32,6 @@ npm test
 
 ## TODO
 
-0. Move the response code to context.
-0. Add context match pattern.
+0. Move the response code to cukeContext.
+0. Add cukeContext match pattern.
 0. Add JWT payload pattern matching.

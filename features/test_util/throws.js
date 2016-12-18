@@ -3,7 +3,7 @@ const { initStepCreationEvents, createThrowStep } = require('../../');
 
 module.exports = function () {
   initStepCreationEvents.call(this);
-  this.cucapiEmitter.on('givenEvent', (self, origDefineStep, re, fn) => {
+  this.cukeapiEmitter.on('givenEvent', (self, origDefineStep, re, fn) => {
     // These are for testing error conditions on the corresponding step functions.
     switch (re.source) {
       case '^"([^"]*)" is "([^"]*)"$':
@@ -16,7 +16,7 @@ module.exports = function () {
         break;
     }
   });
-  this.cucapiEmitter.on('thenEvent', (self, origDefineStep, re, fn) => {
+  this.cukeapiEmitter.on('thenEvent', (self, origDefineStep, re, fn) => {
     // These are for testing error conditions on the corresponding step functions.
     switch (re.source) {
       case '^responded with status code "([^"]*)"$':

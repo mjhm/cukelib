@@ -4,11 +4,11 @@ const _ = require('lodash');
 const { createNotStep, createThrowStep } = require('./lib/util/step_mods');
 
 const hooks = require('./lib/hooks');
-const contextSupport = require('./lib/context_support');
+const getsetSupport = require('./lib/getset_support');
 
 const stepsDict = {
   diagnosticSteps: require('./lib/diagnostic_steps'),
-  contextSteps: require('./lib/context_steps'),
+  getsetSteps: require('./lib/getset_steps'),
   shellSteps: require('./lib/shell_steps'),
   requestSteps: require('./lib/request_steps'),
   responseSteps: require('./lib/response_steps'),
@@ -16,34 +16,34 @@ const stepsDict = {
 };
 
 const initStepCreationEvents = function () {
-  if (this.cucapiEmitter) return;
-  this.cucapiEmitter = new EventEmitter();
+  if (this.cukeapiEmitter) return;
+  this.cukeapiEmitter = new EventEmitter();
 
   const origThen = this.Then;
   this.Then = function (...args) {
     origThen.apply(this, args);
-    this.cucapiEmitter.emit('thenEvent', this, origThen, ...args);
+    this.cukeapiEmitter.emit('thenEvent', this, origThen, ...args);
   };
 
   const origGiven = this.Given;
   this.Given = function (...args) {
     origGiven.apply(this, args);
-    this.cucapiEmitter.emit('givenEvent', this, origGiven, ...args);
+    this.cukeapiEmitter.emit('givenEvent', this, origGiven, ...args);
   };
 
   const origWhen = this.When;
   this.When = function (...args) {
     origWhen.apply(this, args);
-    this.cucapiEmitter.emit('whenEvent', this, origWhen, ...args);
+    this.cukeapiEmitter.emit('whenEvent', this, origWhen, ...args);
   };
 };
 
 const notThenSteps = function (stepDefinitionFn) {
   return function () {
     initStepCreationEvents.call(this);
-    this.cucapiEmitter.on('thenEvent', createNotStep);
+    this.cukeapiEmitter.on('thenEvent', createNotStep);
     stepDefinitionFn.call(this);
-    this.cucapiEmitter.removeListener('thenEvent', createNotStep);
+    this.cukeapiEmitter.removeListener('thenEvent', createNotStep);
   };
 };
 
@@ -53,6 +53,5 @@ const allSteps = notThenSteps(function () {
 
 module.exports = Object.assign(
   { hooks, initStepCreationEvents, notThenSteps, createThrowStep, allSteps },
-  { contextSet: contextSupport.set, contextGet: contextSupport.get },
   stepsDict
 );

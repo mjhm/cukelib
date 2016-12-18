@@ -1,6 +1,6 @@
-Feature: Context variable tests -- happy paths
+Feature: Get/Set variable tests -- happy paths
 
-  Scenario: Set and test context values
+  Scenario: Set and test values
     When "myStringKey" is "myValue"
     And "myNumberKey" is (34.9)
     Then "myStringKey" was "myValue"
@@ -8,7 +8,7 @@ Feature: Context variable tests -- happy paths
     And "myNumberKey" was (34.9)
     And "myNumberKey" was (43.7) ... Not!
 
-  Scenario: Context is reset on a new scenario
+  Scenario: Cuke Context is reset on a new scenario
     Then "myStringKey" was "myValue" ... Not!
 
   Scenario: "Not" variations

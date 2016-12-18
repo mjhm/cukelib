@@ -1,13 +1,13 @@
 /* eslint import/no-unresolved: off */
-const { hooks, contextSet } = require('../../');
+const { hooks } = require('../../');
+const { set } = require('./universe').namespaceFactory('_cukeapi');
 const path = require('path');
 const requestSupport = require('request_support');
 
 module.exports = function () {
   hooks.initCucumberApi.call(this);
   requestSupport.initialize();
-  // contextSet('currentRequestHost', 'localhost:3000');
-  contextSet('currentDatabase', 'myFriendsDB');
+  set('currentDatabase', 'myFriendsDB');
   this.registerHandler('BeforeFeatures', function () {
     hooks.initKnexDatabase({
       name: 'myFriendsDB',

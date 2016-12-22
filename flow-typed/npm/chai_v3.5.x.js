@@ -3,6 +3,8 @@
 
 declare module "chai" {
 
+    declare class AssertionError extends Error {}
+
     declare type ExpectChain<T> = {
         and: ExpectChain<T>,
         at: ExpectChain<T>,

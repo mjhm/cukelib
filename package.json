@@ -8,8 +8,9 @@
     "lint": "./node_modules/.bin/eslint --config .eslintrc.js index.js lib example/app example/harness",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "example_features": "cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test",
-    "happy_features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support features/happy",
-    "sad_features": "SERVER_PORT=3001 ./node_modules/.bin/cucumberjs --require features/support features/sad",
+
+    "cukelib": "./test/cukelib",
+
     "universe_features": "./node_modules/.bin/cucumberjs --require lib/universe/features lib/universe/features",
     "server_feature": "./node_modules/.bin/cucumberjs --require lib/service_control/features",
     "init_server_features": "mkdir -p tmp; touch tmp/nothing; rm tmp/*",
@@ -17,8 +18,9 @@
     "check_server_features": "./lib/service_control/features/check_server_features.js",
     "knex_feature": "./node_modules/.bin/cucumberjs --require lib/knex_control/features",
     "knex_features": "./node_modules/.bin/cucumberjs --require lib/knex_control/features lib/knex_control/features",
-    "all_features": "npm run happy_features; npm run sad_features; npm run universe_features; npm run server_features",
-    "test": "npm run lint; npm run spec; npm run all_features"
+
+    "features": "npm run universe_features; npm run server_features; npm run knex_features",
+    "test": "npm run lint; npm run spec; npm run features"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,7 @@
+#! /bin/bash
+
+libname=`echo $1 | perl -npe 's/^.*\///; s/\.feature(\:\d*)?//'`
+filename=`echo $1 | perl -npe "chop; \\\$_ = /\// ? \\\$_ : './lib/step_features/' . \\\$_ . '.feature'"`
+cmd="node_modules/.bin/cucumberjs --require ./lib/step_features/${libname}_hooks.js $filename"
+echo $cmd
+$cmd

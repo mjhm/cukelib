@@ -1,4 +1,0 @@
-#! /bin/bash
-
-libname=`echo $1 | perl -npe 's/^.*\///; s/\.feature(\:\d*)?//'`
-node_modules/.bin/cucumberjs --require ./lib/step_features/${libname}_hooks.js $1

@@ -8,7 +8,8 @@ module.exports = {
       "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/harness/support/**"]}],
       "no-underscore-dangle": ["error", { "allow": ["_cukeapi"] }],
       "arrow-parens": ["error", "always"],
-      "comma-dangle": ["off"]
+      "comma-dangle": ["off"],
+      "yoda": ["error", "never", { "exceptRange": true }]
     },
     "installedESLint": true,
     "plugins": [

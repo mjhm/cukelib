@@ -10,8 +10,3 @@ Feature: Get/Set variable tests -- happy paths
 
   Scenario: Cuke Context is reset on a new scenario
     Then "myStringKey" was "myValue" ... Not!
-
-  Scenario: "Not" variations
-    Then "myStringKey" was "myValue"... not!
-    Then "myStringKey" was "myValue" not!
-    Then "myStringKey" was "myValue".   Not!

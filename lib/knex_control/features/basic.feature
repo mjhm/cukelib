@@ -12,3 +12,7 @@ Feature: Basic
 
   Scenario: The database connection from the previous step is gone
     Then user "udb1_user" was in the "udb1_db" database. Not!
+
+  Scenario: Database migrations and seeds
+    Given start "udb_seeded" database with migration and seeds
+    Then user "Lazy Lanny" was in the "udb_seeded" database

@@ -46,3 +46,10 @@ Feature: Shell execution tests -- happy paths
       {{myStringKey}} 123
       def {{myNumberKey}}
       """
+
+  Scenario: Run and match one line strings
+    Given "myStringKey" is "abc"
+    When shell script runs
+      | echo abc 123 |
+    Then STDOUT matched
+      | {{myStringKey}} 123 |

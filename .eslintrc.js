@@ -9,7 +9,8 @@ module.exports = {
       "no-underscore-dangle": ["error", { "allow": ["_cukeapi"] }],
       "arrow-parens": ["error", "always"],
       "comma-dangle": ["off"],
-      "yoda": ["error", "never", { "exceptRange": true }]
+      "yoda": ["error", "never", { "exceptRange": true }],
+      "arrow-body-style": ["warn", "as-needed"]
     },
     "installedESLint": true,
     "plugins": [

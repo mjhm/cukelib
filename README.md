@@ -6,7 +6,7 @@ This is toolbox of Cucumber "steps" and "hooks" for testing API's in Cucumber. T
 2. HTTP server requests and responses
 3. Independent SQL database manipulation (via knex)
 4. Steps for running shell and testing scripts
-5. [Get/Set access to namespaces in the cucumber "world"](UNIVERSE.md)
+5. [Get/Set access to namespaced parameters](UNIVERSE.md)
 
 All of these facilities are decoupled as much as possible, so you can take what you like and leave the rest. Contributions are of course welcome.
 

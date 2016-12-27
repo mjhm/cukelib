@@ -14,7 +14,7 @@ All of these facilities are decoupled as much as possible, so you can take what 
 
 For the purposes of getting you started with testing quickly, I've made some non-dogmatic choices about the included step definitions.
 
-0. Step definitions are strictly decoupled from their support function code which are in separate respective `..._steps.js` and `..._support.js` files. This generally a good practice along the lines of keeping views separate from business logic, but the main objective is encourage you to create your own more relevant and readable step definitions.
+0. Step definitions are strictly decoupled from their support function code which are in separate respective `..._steps.js` and `..._support.js` files. This generally a good practice analogous to keeping views separate from business logic, but the main objective is encourage you to create your own more relevant and readable step definitions.
 0. The step definitions are intentionally terse. This is just a choice of simplicity over readability. Terse definitions are easier to write and easier to find, but you are again encouraged to write your own.
 0. The step definitions use a strict convention with "Given" and "When" (setup) steps in present tense, and "Then" (assertion) steps in past tense. This is probably a good practice overall, but it's especially necessary for disambiguating terse definitions.
 0. [Postfix "... Not!"]https://en.wikipedia.org/wiki/..._Not!) steps. The module includes a tool for creating a logical opposite assertion step from a given assertion step. The step definition is the same as the original with a suffix of '... Not!'. This is to be read out loud as if from [Wayne's World](https://youtu.be/BustEdWyqzk?t=2m34s).
@@ -25,13 +25,5 @@ For the purposes of getting you started with testing quickly, I've made some non
 
 ```
 npm install
-(cd example/app; npm install)
-(cd example/harness; npm install)
 npm test
 ```
-
-## TODO
-
-0. Move the response code to cukeContext.
-0. Add cukeContext match pattern.
-0. Add JWT payload pattern matching.

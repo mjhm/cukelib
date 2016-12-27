@@ -4,7 +4,7 @@
   "description": "Cucumber step definitions for API testing",
   "main": "index.js",
   "scripts": {
-    "spec": "./node_modules/.bin/mocha \"lib/**/*_spec.js\" \"example/app/**/*_spec.js\" \"example/harness/**/*_spec.js\"",
+    "spec": "./node_modules/.bin/mocha \"lib/**/*_spec.js\"",
     "lint": "./node_modules/.bin/eslint --config .eslintrc.js index.js lib",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "example_features_xxx": "cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test",

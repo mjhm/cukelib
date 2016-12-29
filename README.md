@@ -1,4 +1,4 @@
-# cucumber-api -- A Starter Kit for API Testing in Cucumber
+#  Cucumber Service Lib -- A Starter Kit for API Testing in Cucumber
 
 This is toolbox of Cucumber "steps" and "hooks" for testing API's in Cucumber. The intent is to get you started testing your API's right now, so the steps and hooks include:
 

@@ -1,4 +1,4 @@
-Feature: Basic
+Feature: Basic Knex Service
 
   Scenario: Each of the before hooks can connect to separate databases.
     Then user "before_features_user" was in the "before_features_db" database

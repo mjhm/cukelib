@@ -1,0 +1,7 @@
+#! /bin/bash
+
+libname=`echo $1 | perl -npe 's/_service.*$//; s/^.*\///; s/\.feature(\:\d*)?//'`
+filename=`echo $1 | perl -npe "chop; \\\$_ = /\// ? \\\$_ : './lib/' . \\\$_ . '_service/features'"`
+cmd="node_modules/.bin/cucumberjs --require ./lib/${libname}_service/features/internal_${libname}_test.js $filename"
+echo $cmd
+$cmd

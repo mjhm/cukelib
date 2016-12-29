@@ -6,7 +6,7 @@ Feature: Basic tests of server spawning and killing
     Then check server "pidServer3002"
     Then check server "pidServer3003"
     Then check server "pidServer3004"
-    Then check embedded server "localhost:3005"
+    # Then check embedded server "localhost:3005"
 
   Scenario: Second Scenario
     Given spawn server
@@ -14,4 +14,4 @@ Feature: Basic tests of server spawning and killing
     Then check server "pidServer3002"
     Then check server "pidServer3003"
     Then check server "pidServer3004"
-    Then check embedded server "localhost:3005"
+    # Then check embedded server "localhost:3005"

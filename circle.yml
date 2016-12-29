@@ -5,3 +5,4 @@ machine:
 test:
   pre:
     - ./node_modules/.bin/npm-install-peers
+    - ./node_modules/.bin/selenium-standalone install

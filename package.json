@@ -17,10 +17,14 @@
     "server_features": "npm run init_server_features; npm run run_server_features && npm run check_server_features",
     "knex_feature": "./node_modules/.bin/cucumberjs --require lib/knex_control/features",
     "knex_features": "./node_modules/.bin/cucumberjs --require lib/knex_control/features lib/knex_control/features",
-    "features": "npm run universe_features && npm run server_features && npm run knex_features && npm run step_features",
+    "selenium_features": "./node_modules/.bin/cucumberjs --require lib/selenium_control/features/webdriverio_test.js lib/selenium_control/features/webdriverio.feature",
+    "features": "npm run universe_features && npm run server_features && npm run knex_features && npm run selenium_features && npm run step_features",
     "features_cuke1": "npm uninstall cucumber; npm install cucumber@1.3.1; npm run features",
     "features_cuke2": "npm uninstall cucumber; npm install cucumber@latest; npm run features",
     "test": "npm run lint && npm run flow && npm run spec && npm run features_cuke1 && npm run features_cuke2"
+  },
+  "engines": {
+    "node": ">=6"
   },
   "repository": {
     "type": "git",
@@ -41,7 +45,10 @@
     "index.js"
   ],
   "peerDependencies": {
-    "cucumber": "*"
+    "cucumber": "*",
+    "knex": "*",
+    "selenium-standalone": "*",
+    "webdriverio": "*"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
@@ -55,7 +62,7 @@
     "flow-bin": "^0.37.0",
     "http-proxy": "^1.15.2",
     "mocha": "^3.1.2",
-    "ps-node": "^0.1.4",
+    "npm-install-peers": "^1.0.1-rc.3",
     "sqlite3": "^3.1.8"
   },
   "dependencies": {
@@ -67,7 +74,6 @@
     "express": "^4.14.0",
     "handlebars": "^4.0.5",
     "js-yaml": "^3.7.0",
-    "knex": "^0.12.6",
     "lodash": "^4.13.1",
     "lodash-match-pattern": "^1.1.0",
     "minimist": "^1.2.0",

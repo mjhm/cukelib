@@ -1,2 +1,4 @@
 [libs]
 flow-typed/npm
+[ignore]
+.*/node_modules/npm/.*

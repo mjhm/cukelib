@@ -1,3 +1,4 @@
+/* eslint arrow-body-style: "off" */
 const { childService, requestSteps, responseSteps } = require('cukeserv');
 
 module.exports = function () {
@@ -17,7 +18,7 @@ module.exports = function () {
   });
 };
 
-// Boilerplate to make the test file compatible with cucumber versions 1 or 2
+// Boilerplate to make this file compatible with cucumber versions 1 or 2
 const cucumber = require('cucumber');
 
 if (cucumber.defineSupportCode) {

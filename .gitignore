@@ -4,6 +4,7 @@ logs
 npm-debug.log*
 
 # Runtime and test
+lib
 pids
 *.pid
 *.seed

@@ -5,7 +5,7 @@ module.exports = {
       "max-len": ["error", 100],
       "func-names": "off",
       "new-cap": ["error", { "capIsNewExceptions": ["Given", "Then", "And", "When", "But", "Before", "After"] }],
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/harness/support/**"]}],
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/examples/*/features/**"]}],
       "no-underscore-dangle": ["error", { "allow": ["_cukeapi"] }],
       "arrow-parens": ["error", "always"],
       "comma-dangle": ["off"],

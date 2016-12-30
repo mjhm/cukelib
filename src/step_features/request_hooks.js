@@ -1,5 +1,4 @@
 // @flow
-const cucumber = require('cucumber');
 const requestSteps = require('../request_steps');
 const responseSteps = require('../response_steps');
 const getSetSteps = require('../getset_steps');
@@ -7,7 +6,7 @@ const diagnosticSteps = require('../diagnostic_steps');
 const { withThenNotSteps, withThrowSteps } = require('../step_mods');
 const childService = require('../child_service');
 
-const requestHooks = function () {
+module.exports = function () {
   childService.initialize.call(this);
   withThrowSteps.call(this,
     withThenNotSteps.bind(this, responseSteps)
@@ -28,10 +27,4 @@ const requestHooks = function () {
   );
 };
 
-if (cucumber.defineSupportCode) {
-  cucumber.defineSupportCode((context) => {
-    requestHooks.call(context);
-  });
-}
-
-module.exports = requestHooks;
+require('../utilities/cuke2compat')(module.exports);

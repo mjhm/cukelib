@@ -1,7 +1,7 @@
 #! /bin/bash
 
-libname=`echo $1 | perl -npe 's/^.*\///; s/\.feature(\:\d*)?//'`
-filename=`echo $1 | perl -npe "chop; \\\$_ = /\// ? \\\$_ : './lib/universe/features/' . \\\$_ . '.feature'"`
-cmd="node_modules/.bin/cucumberjs --require ./lib/universe/features/${libname}_test.js $filename"
+srcname=`echo $1 | perl -npe 's/^.*\///; s/\.feature(\:\d*)?//'`
+filename=`echo $1 | perl -npe "chop; \\\$_ = /\// ? \\\$_ : './src/universe/features/' . \\\$_ . '.feature'"`
+cmd="node_modules/.bin/cucumberjs --require ./src/universe/features/${srcname}_test.js $filename"
 echo $cmd
 $cmd

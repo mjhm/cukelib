@@ -1,12 +1,13 @@
-#  Cucumber Service Lib -- A Starter Kit for API Testing in Cucumber
+#  Cucumber Service Library -- A Starter Kit for API Testing in Cucumber
 
-This is toolbox of Cucumber "steps" and "hooks" for testing API's in Cucumber. The intent is to get you started testing your API's right now, so the steps and hooks include:
+This is toolbox of Cucumber "services", "steps", and "hooks" for testing API's from Cucumber. The intent is to get you started testing your API's right now. Features include:
 
-1. Starting / Stopping multiple servers
-2. HTTP server requests and responses
-3. Independent SQL database manipulation (via knex)
-4. Steps for running shell and testing scripts
+1. Starting multiple servers with automatic stopping and clean up
+2. HTTP server request and response steps
+3. SQL database manipulation
+4. Shell script testing steps
 5. [Get/Set access to namespaced parameters](UNIVERSE.md)
+6. ... and much more
 
 All of these facilities are decoupled as much as possible, so you can take what you like and leave the rest. Contributions are of course welcome.
 

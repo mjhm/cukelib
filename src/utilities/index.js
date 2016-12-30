@@ -2,6 +2,8 @@ const _ = require('lodash');
 const handlebars = require('handlebars');
 const { get } = require('../universe').namespaceFactory('_cukeapi');
 
+// Parses a step argument so that it treats a single cell cucumber table as plain text,
+// and then evaluates it as a handlebars template using the cucumber _cukeapi namespace object.
 module.exports = {
   parseStepArg(stepArg) {
     let toCompile = stepArg;

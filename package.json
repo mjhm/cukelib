@@ -7,10 +7,9 @@
     "spec": "./node_modules/.bin/mocha \"src/**/*_spec.js\"",
     "lint": "./node_modules/.bin/eslint --config .eslintrc.js index.js src",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "example_features_xxx": "cd ./example/harness; rm -rf node_modules/cucumber-api; npm install cucumber-api; npm test",
-    "universe_features": "ls -1 src/universe/features/*.feature | xargs -n 1 ./test/cukeuniverse",
-    "step_features": "ls -1 src/step_features/*.feature | xargs -n 1 ./test/cukesteps",
-    "service_features": "ls -1 src/*_service/features/*.feature | xargs -n 1 ./test/cukeservice",
+    "universe_features": "ls -1 src/universe/features/*.feature | xargs -n 1 ./scripts/cukeuniverse",
+    "step_features": "ls -1 src/step_features/*.feature | xargs -n 1 ./scripts/cukesteps",
+    "service_features": "ls -1 src/*_service/features/*.feature | xargs -n 1 ./scripts/cukeservice",
     "child_service_feature": "./node_modules/.bin/cucumberjs --require src/child_service/features",
     "init_child_service_features": "mkdir -p tmp; touch tmp/nothing; rm tmp/*",
     "run_child_service_features": "ls -1 src/child_service/features/*.feature | xargs -n 1 npm run child_service_feature",
@@ -23,7 +22,7 @@
     "features_cuke1": "npm uninstall cucumber; npm install cucumber@1.3.1; npm run features",
     "features_cuke2": "npm uninstall cucumber; npm install cucumber@latest; npm run features",
     "test": "npm run lint && npm run flow && npm run spec && npm run features_cuke1 && npm run features_cuke2",
-    "prepublish": "rm -rf lib; ./node_modules/.bin/babel src --out-dir lib"
+    "prepublish": "rm -rf lib && ./node_modules/.bin/babel src --out-dir lib && ./scripts/mkindex.js"
   },
   "engines": {
     "node": ">=6"

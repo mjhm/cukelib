@@ -1,14 +1,14 @@
 // @flow
 const { expect } = require('chai');
 const childService = require('../../child_service');
-const standaloneService = require('../standalone');
-const webdriverioService = require('../webdriverio');
+const seleniumStandaloneService = require('../../selenium_standalone_service');
+const webdriverioService = require('../');
 
 module.exports = function () {
   webdriverioService.initialize.call(this);
 
   this.registerHandler('BeforeFeatures', (arg, done) => {
-    standaloneService.launch()
+    seleniumStandaloneService.launch()
     .catch((err) => {
       const msgtag = /Missing.*driver/.test(err.message) ?
         '. You may be missing a driver or need to run "selenium-standalone install"' :

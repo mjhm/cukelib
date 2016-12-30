@@ -1,4 +1,4 @@
-Feature: HTTP Requests sent to the "echo_server" -- happy paths
+Feature: HTTP Requests sent to the "echo_server"
 
   Background: Setup server
     Given launch "echo" test server

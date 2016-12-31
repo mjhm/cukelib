@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "cucumber": "^2.0.0-rc.5",
-    "cukeserv": "file:../../../cukeserv"
+    "cukeserv": "file:../../"
   }
 }

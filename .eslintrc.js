@@ -6,7 +6,7 @@ module.exports = {
       "func-names": "off",
       "new-cap": ["error", { "capIsNewExceptions": ["Given", "Then", "And", "When", "But", "Before", "After"] }],
       "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/examples/*/features/**"]}],
-      "no-underscore-dangle": ["error", { "allow": ["_cukeapi"] }],
+      "no-underscore-dangle": ["error", { "allow": ["_cukeserv"] }],
       "arrow-parens": ["error", "always"],
       "comma-dangle": ["off"],
       "yoda": ["error", "never", { "exceptRange": true }],

@@ -4,7 +4,7 @@ const yaml = require('js-yaml');
 const handlebars = require('handlebars');
 const requestPromise = require('request-promise');
 const { parseStepArg } = require('./utilities');
-const { get, set, log, log3, initializeWith } = require('./universe').namespaceFactory('_cukeapi');
+const { get, set, log, log3, initializeWith } = require('./universe').namespaceFactory('_cukeserv');
 
 const requestCommon = (routeStr, options) => {
   const combinedOptions = _.defaults(options, get('_request.defaultOptions'));

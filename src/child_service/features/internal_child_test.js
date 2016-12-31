@@ -10,7 +10,7 @@ const { spawn, initialize } = require('../');
 const requestPromise = require('request-promise');
 const universe = require('../../universe');
 
-const { get } = universe.namespaceFactory('_cukeapi');
+const { get } = universe.namespaceFactory('_cukeserv');
 const testNS = universe.namespaceFactory('_internal_server_test');
 
 const recordPID = (pid, msg) =>

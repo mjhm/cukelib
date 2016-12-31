@@ -4,7 +4,7 @@ const _ = require('lodash');
 const Promise = require('bluebird');
 const universe = require('../universe');
 
-const serviceControlNS = universe.namespaceFactory('_cukeapi');
+const serviceControlNS = universe.namespaceFactory('_cukeserv');
 const { get, set, log3, unset, hasKey, getCukeContext, initializeWith } = serviceControlNS;
 
 const listServices = (serviceRoot: string, depth: number) => {

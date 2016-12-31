@@ -4,7 +4,7 @@ const { expect, AssertionError } = require('chai');
 const { parseStepArg } = require('./utilities');
 const ldMatchPattern = require('lodash-match-pattern');
 
-const { get, set, initializeWith } = require('./universe').namespaceFactory('_cukeapi');
+const { get, set, initializeWith } = require('./universe').namespaceFactory('_cukeserv');
 
 module.exports = {
   initialize() {

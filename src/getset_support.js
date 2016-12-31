@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const _ = require('lodash');
-const { get, set, initializeWith } = require('./universe').namespaceFactory('_cukeapi');
+const { get, set, initializeWith } = require('./universe').namespaceFactory('_cukeserv');
 
 const checkReserved = (k) => {
   if (/^_/.test(k)) {

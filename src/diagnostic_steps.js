@@ -1,5 +1,5 @@
 const util = require('util');
-const { get, featureGet, universeGet } = require('./universe').namespaceFactory('_cukeapi');
+const { get, featureGet, universeGet } = require('./universe').namespaceFactory('_cukeserv');
 
 module.exports = function () {
   this.Then(/^inspect "([^"]+)"$/, (path) =>

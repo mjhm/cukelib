@@ -3,7 +3,7 @@ const _ = require('lodash');
 const Promise = require('bluebird');
 const knex = require('knex');
 const serviceControl = require('../service_control');
-const { set } = require('../universe').namespaceFactory('_cukeapi');
+const { set } = require('../universe').namespaceFactory('_cukeserv');
 
 let databaseCounter = 0;
 

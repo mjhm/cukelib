@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const serviceControl = require('../service_control');
 const universe = require('../universe');
 
-const { get, unset } = universe.namespaceFactory('_cukeapi');
+const { get, unset } = universe.namespaceFactory('_cukeserv');
 
 
 const killProcWhenOrphaned = function (proc, name) {

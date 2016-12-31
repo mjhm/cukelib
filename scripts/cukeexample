@@ -1,0 +1,4 @@
+#! /bin/bash
+
+echo testing example $1
+cd $1 && npm install && npm test

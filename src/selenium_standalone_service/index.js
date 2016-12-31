@@ -3,7 +3,9 @@ const _ = require('lodash');
 const Promise = require('bluebird');
 const childService = require('../child_service');
 const serviceControl = require('../service_control');
-const selenium = require('selenium-standalone');
+const tryRequire = require('../utilities/try_require');
+
+const selenium = tryRequire('selenium-standalone', ['start']);
 
 let seleniumCounter = 0;
 

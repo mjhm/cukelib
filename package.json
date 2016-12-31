@@ -7,6 +7,7 @@
     "spec": "./node_modules/.bin/mocha \"src/**/*_spec.js\"",
     "lint": "./node_modules/.bin/eslint --config .eslintrc.js index.js src",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "example_features": "ls -1 -d examples/*/ | xargs -n 1 ./scripts/cukeexample",
     "universe_features": "ls -1 src/universe/features/*.feature | xargs -n 1 ./scripts/cukeuniverse",
     "step_features": "ls -1 src/step_features/*.feature | xargs -n 1 ./scripts/cukesteps",
     "service_features": "ls -1 src/*_service/features/*.feature | xargs -n 1 ./scripts/cukeservice",
@@ -18,7 +19,7 @@
     "knex_feature": "./node_modules/.bin/cucumberjs --require src/knex_service/features",
     "knex_features": "./node_modules/.bin/cucumberjs --require src/knex_service/features src/knex_service/features",
     "selenium_features": "./node_modules/.bin/cucumberjs --require src/selenium_services/features/webdriverio_test.js src/selenium_services/features/webdriverio.feature",
-    "features": "npm run universe_features && npm run child_service_features && npm run service_features && npm run step_features",
+    "features": "npm run universe_features && npm run child_service_features && npm run service_features && npm run step_features && npm run example_features",
     "features_cuke1": "npm uninstall cucumber; npm install cucumber@1.3.1; npm run features",
     "features_cuke2": "npm uninstall cucumber; npm install cucumber@latest; npm run features",
     "test": "npm run lint && npm run flow && npm run spec && npm run features_cuke1 && npm run features_cuke2",
@@ -46,10 +47,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "cucumber": "*",
-    "knex": "*",
-    "selenium-standalone": "*",
-    "webdriverio": "*"
+    "cucumber": "*"
   },
   "devDependencies": {
     "babel": "^6.5.2",

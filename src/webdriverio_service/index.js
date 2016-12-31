@@ -2,7 +2,9 @@
 const _ = require('lodash');
 const Promise = require('bluebird');
 const serviceControl = require('../service_control');
-const webdriverio = require('webdriverio');
+const tryRequire = require('../utilities/try_require');
+
+const webdriverio = tryRequire('webdriverio', ['remote']);
 
 module.exports = serviceControl.addBoilerPlate('webdriverio', {
   launch(config: Object) {

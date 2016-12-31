@@ -1,9 +1,11 @@
 // @flow
 const _ = require('lodash');
 const Promise = require('bluebird');
-const knex = require('knex');
+const tryRequire = require('../utilities/try_require');
 const serviceControl = require('../service_control');
 const { set } = require('../universe').namespaceFactory('_cukeserv');
+
+const knex = tryRequire('knex');
 
 let databaseCounter = 0;
 

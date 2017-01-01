@@ -5,7 +5,4 @@ machine:
 test:
   pre:
     - ./node_modules/.bin/npm-install-peers
-    - npm install knex
-    - npm install webdriverio
-    - npm install selenium-standalone
     - ./node_modules/.bin/selenium-standalone install

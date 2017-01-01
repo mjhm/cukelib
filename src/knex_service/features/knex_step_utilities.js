@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-expressions */
 // @flow
 const Promise = require('bluebird');
+const { expect } = require('chai');
 const knexService = require('../');
+const stepMods = require('../../step_mods');
 
 
 const createTableWithUser = Promise.coroutine(function* (dbConn, name) {
@@ -22,6 +25,19 @@ module.exports = {
       knexService.launch({ name: `${db}_db` })
         .then((knexService1) => createTableWithUser(knexService1.dbConn, `${db}_user`))
     );
+  },
+
+  isUserInDbSteps() {
+    stepMods.withThenNotSteps.call(this, function () {
+      this.Then(/^user "([^"]+)" was in the "([^"]+)" database$/, (user, db) => {
+        const { dbConn } = knexService.getService(db) || {};
+        expect(dbConn).to.exist;
+        return dbConn('users').first('*').where('name', user)
+        .then((result) => {
+          expect(result).to.exist;
+        });
+      });
+    });
   },
 
   createTableWithUser,

@@ -2,7 +2,7 @@ const cucumber = require('cucumber');
 const sqlSteps = require('../sql_steps');
 const diagnosticSteps = require('../diagnostic_steps');
 const { withThenNotSteps, withThrowSteps } = require('../step_mods');
-const { knexStartStep } = require('../knex_service/features/knex_start_step');
+const { knexStartStep } = require('../knex_service/features/knex_step_utilities');
 
 const sqlHooks = function () {
   withThrowSteps.call(this,

@@ -82,7 +82,8 @@ const stepMods = {
         const isPromise = _.isObject(result) && _.isFunction(result.then);
         if (!isPromise) throwMe = true;
       } catch (error) {
-        if (errorClassName && error.name !== errorClassName) {
+        if (errorClassName &&
+          (error.name || '').toLowerCase() !== errorClassName.toLowerCase()) {
           assertFail(
             `Expected thrown error to be type ${errorClassName} but was ${error.stack || error}`
           );
@@ -93,7 +94,8 @@ const stepMods = {
 
       throwMe = true;
       return result.catch((error) => {
-        if (errorClassName && error.name !== errorClassName) {
+        if (errorClassName &&
+          (error.name || '').toLowerCase() !== errorClassName.toLowerCase()) {
           assertFail(
             `Expected rejected error to be type ${errorClassName} but was ${error.stack || error}`
           );

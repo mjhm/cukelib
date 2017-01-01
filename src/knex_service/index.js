@@ -24,22 +24,16 @@ module.exports = serviceControl.addBoilerPlate('knex', {
       `database_${databaseCounter += 1}`;
     const start = Promise.coroutine(function* () {
       const dbConn = knex(knexConfig);
-      yield dbConn.migrate.latest()
-      .catch((err) => {
-        if (err.code === 'ENOENT' && /\/migrations$/.test(err.path)) return;
-        throw err;
-      });
-      yield dbConn.seed.run()
-      .catch((err) => {
-        if (err.code === 'ENOENT' && /\/seeds$/.test(err.path)) return;
-        throw err;
-      });
+      if (knexConfig.migrations) {
+        yield dbConn.migrate.latest();
+      }
+      if (knexConfig.seeds) {
+        yield dbConn.seed.run();
+      }
       const stop = Promise.coroutine(function* () {
-        yield dbConn.migrate.rollback()
-        .catch((err) => {
-          if (err.code === 'ENOENT' && /\/migrations$/.test(err.path)) return;
-          throw err;
-        });
+        if (knexConfig.migrations) {
+          yield dbConn.migrate.rollback();
+        }
         return dbConn.destroy();
       });
       return { name, dbConn, stop, config: knexConfig };

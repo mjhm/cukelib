@@ -115,6 +115,7 @@ For the purposes of getting you started with testing quickly, I've made some non
 3. [Child Service](src/child_service) launches shell executable servers as child processes of the cucumber process.
 4. [Embed Service](src/embed_service) launches NodeJS servers (e.g. `http.Server`) embedded within the cucumber process.
 5. [Knex Service](src/knex_service) connects to SQL databases via the [knex query builder](http://knexjs.org/).
+5. [Create Database Service](src/create_database_service) convenience service to create (and drop) feature databases.
 6. [Selenium Standalone Service](src/selenium_standalone_service) launches the selenium standalone server. This is included for completeness. Most likely you are managing your Selenium server separately.
 7. [WebdriverIO Service](src/webdriverio_service) launches the [WebdriverIO](http://webdriver.io/guide.html) Selenium interface as an embedded service within the cucumber process.
 8. [GetSet Steps](src/getset_steps.js) exposes access to the "universe" objects as cucumber steps.
@@ -126,4 +127,9 @@ For the purposes of getting you started with testing quickly, I've made some non
 
 ### Examples
 
-1. [Simple Echo Server](examples/echo_server)
+0. [Simple Echo Server](examples/echo_server) -- Child Service, Request Steps, Response Steps.
+0. [Ad Server](examples/ad_server) -- Child Service, Create Database Service, Knex Service, SQL Steps, Request Steps, Response Steps
+
+### Diagnostic Tips
+
+1. Run with environment variable CUKESERV_VERBOSITY set to 1, 2, or 3

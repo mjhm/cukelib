@@ -16,7 +16,7 @@ exports.seed = (knex) =>
       { brand: 'Playtex' },
       { brand: 'Samsonite' },
       { brand: 'Hilton' },
-      { brand: 'Virginia Slims' },
+      { brand: 'Heinz Baked Beans' },
       { brand: 'Coca-Cola' },
     ]),
   ]);

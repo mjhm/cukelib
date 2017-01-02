@@ -8,7 +8,7 @@ const { get, set, log, log3, initializeWith } = require('./universe').namespaceF
 
 const requestCommon = (routeStr, options) => {
   const combinedOptions = _.defaults(options, get('_request.defaultOptions'));
-  const url = handlebars.compile(`${combinedOptions.host}/${routeStr}`)(get());
+  const url = handlebars.compile(`${combinedOptions.host}/${routeStr.replace(/^\//, '')}`)(get());
   const requestOptions = _.defaults({ url }, _.omit(combinedOptions, 'host'));
   set('_request.requestOptions', requestOptions);
   log3('log3', 'requestOptions', requestOptions);

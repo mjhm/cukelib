@@ -1,5 +1,5 @@
 
 module.exports = ({ resources }) => {
-  resources('users');
-  resources('ads');
+  resources('users', { only: ['index', 'show', 'update', 'create', 'destroy'] });
+  resources('ads', { only: ['index', 'show', 'update', 'create', 'destroy'] });
 };

@@ -7,7 +7,6 @@ const knexfile = require('../../knexfile');
 
 module.exports = function () {
   childService.initialize.call(this);
-
   requestSteps.call(this, {
     host: 'http://localhost:3002'
   });

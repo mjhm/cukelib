@@ -11,14 +11,27 @@ const knexfile = require('./knexfile');
 const app = express();
 const dbConn = knex(knexfile[app.get('env')]);
 app.use(bodyParser.json());
-app.use(exprestive());
 
+app.use(exprestive({ dependencies: { dbConn } }));
 app.use((req, res) => {
-  if (req.query.statusCode) {
-    res.status(req.query.statusCode);
-  }
-  res.json(req.body);
+  // eslint-disable-next-line no-console
+  console.error('Request Not Found', req.method, req.url);
+  res.sendStatus(404);
 });
+
+app.use((err, req, res, next) => {
+  // eslint-disable-next-line no-console
+  console.error(err);
+  if (res.headersSent) {
+    return next(err);
+  }
+  return res.sendStatus(500);
+});
+
+//   isPostgresError =  /^\w{5}$/.test(err.code) or
+//     /Knex\: Timeout acquiring a connection/.test(err.message)
+//   res.sendStatus if isPostgresError then 503 else 500
+// router
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

@@ -21,7 +21,9 @@ module.exports = {
 
   queryMatchPattern(targetPatternStr: string|Object) {
     const targetPattern = parseStepArg(targetPatternStr);
-    return get('_sql.responsePromise').then((result) => {
+    const respPromise = get('_sql.responsePromise');
+    if (!respPromise) throw new Error('queryMatchPattern: no query response is defined');
+    return respPromise.then((result) => {
       const resultToMatch = result.rows || result;
       const check = ldMatchPattern(resultToMatch, targetPattern);
       if (check) throw new AssertionError(check);
@@ -29,7 +31,9 @@ module.exports = {
   },
 
   queryRowCount(targetCountStr: string) {
-    return get('_sql.responsePromise').then((result) => {
+    const respPromise = get('_sql.responsePromise');
+    if (!respPromise) throw new Error('queryRowCount: no query response is defined');
+    return respPromise.then((result) => {
       let rowCount;
       if (!result) rowCount = 0;
       else if (_.isInteger(result.rowCount)) rowCount = result.rowCount; // postgres

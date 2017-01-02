@@ -16,10 +16,10 @@ exports.up = (knex) =>
   ])
   .then(() =>
     knex.schema.createTable('user_ad_map', (table) => {
-      table.integer('user').references('users.id').onDelete('CASCADE');
-      table.integer('ad').references('ads.id').onDelete('CASCADE');
-      table.integer('view_count').notNullable().defaultTo(0);
-      table.primary('user', 'ad');
+      table.integer('user_id').references('users.id').onDelete('CASCADE');
+      table.integer('ad_id').references('ads.id').onDelete('CASCADE');
+      table.integer('view_count').notNullable().defaultTo(1);
+      table.primary(['user_id', 'ad_id']);
     })
   );
 

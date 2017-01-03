@@ -1,4 +1,4 @@
-#  Cucumber Service Library -- A Starter Kit for API Testing
+#  Cucumber Service Library -- A Toolbox for API Testing
 [![NPM](https://nodei.co/npm/cukelib.png?downloads=true)](https://www.npmjs.com/package/cukelib)
 
 ![CircleCI](https://circleci.com/gh/Originate/cukelib.svg?style=shield&circle-token=:circle-token)
@@ -82,7 +82,7 @@ That's simple enough, but there's actually a lot going on under the hood here.
 0. Furthermore you can launch the server in `BeforeFeatures` or `BeforeFeature` hooks or even in actual steps, and `cukelib` will stop and cleanup the server at the end of the run, at the end of the feature, or at the end of the scenario as appropriate.
 0. The request text is actually parsed as YAML, and...
 0. The response text is matched using the [lodash-match-pattern](https://github.com/Originate/lodash-match-pattern/blob/master/README.md) library, and...
-0. Both the request and support interpret single cell tables as argument strings, so the scenario can be concisely expressed:
+0. Both the request and support interpret single cell tables as argument strings, so a similar scenario can be concisely expressed:
 
 ```gherkin
 Feature: Cleaner Request/Response Steps
@@ -104,7 +104,7 @@ The library is generally organized around services and steps. Although it's most
 
 #### Service conventions
 
-All of the services are variations on the theme illustrated by `childService` above. They all implement `launch` and `stop` functionality and automatically run their `stop` functions within an appropriate testing life-cycle hook. All of the services and most of the steps also have `initialize` functions. In most cases it's fine to just call any one of them at the beginning of a step definition file.
+All of the services are variations on the theme illustrated by `childService` in the support code snippet above. They all implement `launch` and `stop` functionality and automatically run their `stop` functions within an appropriate testing life-cycle hook. All of the services and most of the steps also have `initialize` functions. In most cases it's fine to just call any one of them at the beginning of a step definition file.
 
 And yes, it's possible and in fact typical, to launch multiple concurrent services.
 
@@ -114,8 +114,8 @@ For the purposes of getting you started with testing quickly, I've made some non
 
 0. Step definitions are strictly decoupled from their support function code which are in separate respective `..._steps.js` and `..._support.js` files. This generally a good practice analogous to keeping views separate from business logic, but my main objective is to allow you to customize your own more relevant and readable step definitions.
 0. The step definitions are intentionally terse. This is just a choice of simplicity over readability. Terse definitions are easier to write and easier to find, but again, you're free to customize your own.
-0. The step definitions use follow a strict convention with "Given" and "When" (setup) steps in present tense, and "Then" (assertion) steps in past tense. This is probably a good practice overall, but it's especially necessary for disambiguating terse definitions.
-0. [Postfix ... Not!](https://en.wikipedia.org/wiki/..._Not!) steps. The module includes a tool for creating a logical opposite assertion step from a given assertion step. The step definition is the same as the original with a suffix of '... Not!'. This is to be read out loud as if from [Wayne's World](https://youtu.be/BustEdWyqzk?t=2m34s).
+0. The step definitions follow a strict convention with "Given" and "When" (setup) steps in present tense, and "Then" (assertion) steps in past tense. This is probably a good practice overall, but it's especially necessary for disambiguating terse definitions.
+0. [Postfix ... Not!](https://en.wikipedia.org/wiki/..._Not!) steps. The module includes a [tool](src/step_mods) for creating a logical opposite assertion steps from assertion steps. The step definition is the same as the original with a suffix of '... Not!'. This is to be read out loud as if from [Wayne's World](https://youtu.be/BustEdWyqzk?t=2m34s).
 
 
 ### Library Details
@@ -135,6 +135,7 @@ For the purposes of getting you started with testing quickly, I've made some non
 10. [SQL Overview](src/SQL.md)
 11. [SQL Steps](src/sql_steps.js) provides steps for issuing and interpreting results of SQL commands issued through Knex Services.
 12. [Shell Steps](src/shell_steps.js) for running and interpreting output of shell scripts.
+12. [Not! and Throw! Steps](src/step_mods) wrappers for generating logical "Not!" steps (Throw! steps are useful for testing the development of step libraries such as this one. They aren't useful for general library usage.)
 13. [Diagnostic Steps](src/diagnostic_steps.js) for inspecting the state of the universe and debugging potential confusion.
 
 ### Examples
@@ -148,4 +149,4 @@ For the purposes of getting you started with testing quickly, I've made some non
 
 ### Contributing
 
-**Thank You in Advance**  By all means submit issues, bug reports, suggestions, etc. to the github issues page.
+**Thank You in Advance.**  By all means submit issues, bug reports, suggestions, etc. to the [github issues](https://github.com/Originate/cukelib/issues).

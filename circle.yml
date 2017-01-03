@@ -6,3 +6,11 @@ test:
   pre:
     - ./node_modules/.bin/npm-install-peers
     - ./node_modules/.bin/selenium-standalone install
+
+
+deployment:
+  publish:
+    branch: release
+    commands:
+      - npm set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
+      - npm publish

@@ -4,7 +4,7 @@ const { get, set, initializeWith } = require('./universe').namespaceFactory('_cu
 
 const checkReserved = (k) => {
   if (/^_/.test(k)) {
-    throw new Error('"_" prefix is not allowed on a cucucumber-api get/set key');
+    throw new Error('"_" prefix is not allowed on a cucukelib get/set key');
   }
   return k;
 };

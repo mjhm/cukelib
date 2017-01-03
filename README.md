@@ -44,7 +44,7 @@ Here's all the [support code](examples/echo_server/features/support/index.js) th
 
 ```JavaScript
 
-const { childService, requestSteps, responseSteps } = require('cukeserv');
+const { childService, requestSteps, responseSteps } = require('cukelib');
 
 module.exports = function () {
   childService.initialize.call(this);
@@ -69,7 +69,7 @@ That's simple enough, but there's actually a lot going on under the hood here.
 
 0. The `childService.spawn(...)` function launches the server, connects its output streams, and handles its errors.
 0. Notice there's no need for an `After` hook to stop the server -- `childService.spawn(...)` also sets up its own cleanup hooks.
-0. Furthermore you can launch the server in `BeforeFeatures` or `BeforeFeature` hooks or even in actual steps, and `cukeserv` will stop and cleanup the server at the end of the run, at the end of the feature, or at the end of the scenario as appropriate.
+0. Furthermore you can launch the server in `BeforeFeatures` or `BeforeFeature` hooks or even in actual steps, and `cukelib` will stop and cleanup the server at the end of the run, at the end of the feature, or at the end of the scenario as appropriate.
 0. The request text is actually parsed as YAML, and...
 0. The response text is matched using the [lodash-match-pattern](https://github.com/Originate/lodash-match-pattern/blob/master/README.md) library, and...
 0. Both the request and support interpret single cell tables as argument strings, so the scenario can be concisely expressed:
@@ -134,4 +134,4 @@ For the purposes of getting you started with testing quickly, I've made some non
 
 ### Diagnostic Tips
 
-1. Run with environment variable CUKESERV_VERBOSITY set to 1, 2, or 3
+1. Run with environment variable cukelib_VERBOSITY set to 1, 2, or 3

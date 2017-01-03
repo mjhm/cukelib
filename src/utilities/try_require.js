@@ -8,7 +8,7 @@ module.exports = (id, stubs = []) => {
     return require(id);
   } catch (err) {
     if (err.code === 'MODULE_NOT_FOUND') {
-      const newMsg = `Need to "npm install ${id}" to use this cukeserv functionality`;
+      const newMsg = `Need to "npm install ${id}" to use this cukelib functionality`;
       const thrower = () => {
         throw new Error(newMsg);
       };

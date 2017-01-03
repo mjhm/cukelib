@@ -2,7 +2,7 @@
 const {
   childService, requestSteps, responseSteps,
   knexService, sqlSteps, createDatabaseService,
-} = require('cukeserv');
+} = require('cukelib');
 const knexfile = require('../../knexfile');
 
 module.exports = function () {

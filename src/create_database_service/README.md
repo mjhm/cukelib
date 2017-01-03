@@ -7,12 +7,12 @@ This is a convenience service that creates (and drops) an SQL database using the
 #### require via
 
 ```javascript
-const { createDatabaseService } = require('cukeserv');
+const { createDatabaseService } = require('cukelib');
 ```
 ... or standalone ...
 
 ```javascript
-const createDatabaseService = require('cukeserv/lib/create_database_service');
+const createDatabaseService = require('cukelib/lib/create_database_service');
 ```
 
 #### createDatabaseService.launch(config: Object})
@@ -20,7 +20,7 @@ const createDatabaseService = require('cukeserv/lib/create_database_service');
 ##### `config`
 
 - `config` is an object that can be passed to `knex(...)` to create a knex client. This is the same config object that is passed to `knex` to create a connection.
-- `config.name` can be specified as an explicit name for the `cukeserv` service identifier, otherwise the service name defaults to the database name from `config.connection.database` or a sequentially named identifier.
+- `config.name` can be specified as an explicit name for the `cukelib` service identifier, otherwise the service name defaults to the database name from `config.connection.database` or a sequentially named identifier.
 - `config` should include at least
 ```
   {
@@ -33,7 +33,7 @@ const createDatabaseService = require('cukeserv/lib/create_database_service');
 
 ##### Return
 
-- Returns a promise for a `cukeserv` service object:
+- Returns a promise for a `cukelib` service object:
 
 ```
 {

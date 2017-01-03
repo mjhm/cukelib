@@ -3,7 +3,7 @@ const _ = require('lodash');
 const Promise = require('bluebird');
 const tryRequire = require('../utilities/try_require');
 const serviceControl = require('../service_control');
-const { set } = require('../universe').namespaceFactory('_cukeserv');
+const { set } = require('../universe').namespaceFactory('_cukelib');
 
 const knex = tryRequire('knex');
 

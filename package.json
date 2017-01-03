@@ -1,5 +1,5 @@
 {
-  "name": "cukeserv",
+  "name": "cukelib",
   "version": "0.1.0",
   "description": "Cucumber step definitions and service control for API testing",
   "main": "lib",
@@ -10,7 +10,7 @@
     "example_features": "ls -1 -d examples/*/ | xargs -n 1 ./scripts/cukeexample",
     "universe_features": "ls -1 src/universe/features/*.feature | xargs -n 1 ./scripts/cukeuniverse",
     "step_features": "ls -1 src/step_features/*.feature | xargs -n 1 ./scripts/cukesteps",
-    "service_features": "ls -1 src/*_service/features/*.feature | xargs -n 1 ./scripts/cukeservice",
+    "service_features": "ls -1 src/*_service/features/*.feature | xargs -n 1 ./scripts/cukelibice",
     "child_service_feature": "./node_modules/.bin/cucumberjs --require src/child_service/features",
     "init_child_service_features": "mkdir -p tmp; touch tmp/nothing; rm tmp/*",
     "run_child_service_features": "ls -1 src/child_service/features/*.feature | xargs -n 1 npm run child_service_feature",

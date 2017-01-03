@@ -3,7 +3,7 @@ const _ = require('lodash');
 const expect = require('chai').expect;
 const childProcess = require('child_process');
 const { parseStepArg } = require('./utilities');
-const { get, set, initializeWith } = require('./universe').namespaceFactory('_cukeserv');
+const { get, set, initializeWith } = require('./universe').namespaceFactory('_cukelib');
 
 type Stream = 'STDOUT' | 'STDERR';
 

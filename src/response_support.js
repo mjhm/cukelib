@@ -3,7 +3,7 @@ const _ = require('lodash');
 const { expect, AssertionError } = require('chai');
 const ldMatchPattern = require('lodash-match-pattern');
 const { parseStepArg } = require('./utilities');
-const { get, initializeWith } = require('./universe').namespaceFactory('_cukeserv');
+const { get, initializeWith } = require('./universe').namespaceFactory('_cukelib');
 
 const jsonParseOrNull = (body) => {
   try {

@@ -3,7 +3,7 @@
 const utilities = require('./');
 const { expect } = require('chai');
 
-const { set, initializeWith } = require('../universe').namespaceFactory('_cukeserv');
+const { set, initializeWith } = require('../universe').namespaceFactory('_cukelib');
 
 const stubCukeEnv = {
   World: {},

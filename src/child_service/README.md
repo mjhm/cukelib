@@ -5,12 +5,12 @@ Launches shell executable servers as child processes of the cucumber process.
 #### require via
 
 ```javascript
-const { childService } = require('cukeserv');
+const { childService } = require('cukelib');
 ```
 ... or standalone ...
 
 ```javascript
-const childService = require('cukeserv/lib/child_service');
+const childService = require('cukelib/lib/child_service');
 ```
 
 
@@ -19,7 +19,7 @@ const childService = require('cukeserv/lib/child_service');
 ##### `config`
 
 - `config` is an object that represents arguments to [`require('child_process').spawn`](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options). It's members are
-   - `name: string` The name of the cukeserv service (required).
+   - `name: string` The name of the cukelib service (required).
    - `cmd: string` Spawn command argument (required).
    - `args: [string]` Spawn args argument
    - `options: Object` Spawn options argument.
@@ -31,7 +31,7 @@ const childService = require('cukeserv/lib/child_service');
    ##### Return and side effects
 
    - Sets up event listeners to kill the child process when the parent process exits.
-   - Returns a promise for a `cukeserv` service object:
+   - Returns a promise for a `cukelib` service object:
 
    ```
    {

@@ -4,7 +4,7 @@ const requestPromise = require('request-promise');
 const { RequestError } = require('request-promise/errors');
 const { expect } = require('chai');
 const embedService = require('../');
-const { get, set } = require('../../universe').namespaceFactory('_cukeserv');
+const { get, set } = require('../../universe').namespaceFactory('_cukelib');
 
 
 const requestEmbedId = (port) => Promise.resolve(requestPromise(`http://localhost:${port}`));

@@ -1,5 +1,5 @@
 /* eslint arrow-body-style: "off" */
-const { childService, requestSteps, responseSteps } = require('cukeserv');
+const { childService, requestSteps, responseSteps } = require('cukelib');
 
 module.exports = function () {
   childService.initialize.call(this);

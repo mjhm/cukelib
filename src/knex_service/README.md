@@ -5,12 +5,12 @@ Connects to SQL databases through the [Knex Query Builder module](http://knexjs.
 #### require via
 
 ```javascript
-const { knexService } = require('cukeserv');
+const { knexService } = require('cukelib');
 ```
 ... or standalone ...
 
 ```javascript
-const knexService = require('cukeserv/lib/knex_service');
+const knexService = require('cukelib/lib/knex_service');
 ```
 
 #### knexService.launch(config: Object})
@@ -18,7 +18,7 @@ const knexService = require('cukeserv/lib/knex_service');
 ##### `config`
 
 - `config` is an object that can be passed to `knex(...)` to create a knex client with a few additional parameters and conventions.
-- `config.name` can be specified as an explicit name for the `cukeserv` service identifier, otherwise the service name defaults to the database name from `config.connection.database` or a sequentially named identifier.
+- `config.name` can be specified as an explicit name for the `cukelib` service identifier, otherwise the service name defaults to the database name from `config.connection.database` or a sequentially named identifier.
 - If `config.migrations.directory` or `config.seeds.directory` are specified the respective migrations or seeds are applied to the database when the service is launched, and the migrations are rolled back when the service stops.
 - `config` is merged with the following via `_.defaultdDeep`, so be sure to specify these values explicitly as needed
 ```javascript
@@ -33,9 +33,9 @@ const knexService = require('cukeserv/lib/knex_service');
 
 ##### Return and side effect
 
-- Sets universe variable `_cukeserv.currentDatabase` to the name from the config.
+- Sets universe variable `_cukelib.currentDatabase` to the name from the config.
 
-- Returns a promise for a `cukeserv` service object:
+- Returns a promise for a `cukelib` service object:
 
 ```
 {

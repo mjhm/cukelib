@@ -24,9 +24,9 @@ const childService = require('cukeserv/lib/child_service');
    - `args: [string]` Spawn args argument
    - `options: Object` Spawn options argument.
    - `isReady: (proc: childProcess) => Promise` the promise is resolved when the child process is ready. The default `isReady` is to resolves when the first output to stdout is received from `proc`
-   - `stderrHandler: (data) =>` default is to print via `console.error(chalk.magenta(...))`
-   - `stdoutHandler: (data) =>` default is to print via `console.log(chalk.magenta(...))`. Assign the function `(data) => null` for a "quiet" output.
-   - `errorHandler: (err) =>` default is to print the err via `console.error(chalk.magenta(...))`
+   - `stderrHandler: Function(data: string)` default is to print via `console.error(chalk.magenta(...))`
+   - `stdoutHandler: Function(data: string)` default is to print via `console.log(chalk.magenta(...))`. Assign the function `(data) => null` for a "quiet" output.
+   - `errorHandler: Function(err: Error)` default is to print the err via `console.error(chalk.magenta(...))`
 
    ##### Return and side effects
 

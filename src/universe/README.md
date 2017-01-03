@@ -27,7 +27,7 @@ The complete list of `namespaceFactory` functions are:
 
 ##### getCukeContext() => string (universe|feature|scenario)
 
-This returns the current execution context. Essentially it will be 'universe' within a `BeforeFeatures/AfteFeatures` hook, 'feature' within a `BeforeFeature/AfterFeature` hook and `scenario` within `Before/After` hooks and step functions.
+This returns the current execution context. Essentially it will be 'universe' within a `BeforeFeatures/AfteFeatures` hook, 'feature' within a `BeforeFeature` hook, and `scenario` within `Before/After` hooks and step functions.
 
 
 #### Scenario context functions

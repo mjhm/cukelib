@@ -32,6 +32,7 @@ const initialize = function () {
     _.forIn(universe, (v, k) => (currentFeature[k] = _.clone(v)));
   });
   this.registerHandler('AfterFeature', () => {
+    console.log('set context to universe');
     cukeContext = 'universe';
     currentFeature = {};
   });

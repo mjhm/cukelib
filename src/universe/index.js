@@ -9,7 +9,7 @@ let currentScenario = {};
 let isInitialized = false;
 let cukeContext = 'universe';
 
-const verbosity = _.clamp(_.toInteger(process.env.cukelib_VERBOSITY), 0, 3);
+const verbosity = _.clamp(_.toInteger(process.env.CUKESERV_VERBOSITY), 0, 3);
 
 /* eslint-disable no-console */
 const log3 = (verbosity >= 3) ? console.log.bind(console) : () => undefined;
@@ -31,19 +31,13 @@ const initialize = function () {
     currentFeature = {};
     _.forIn(universe, (v, k) => (currentFeature[k] = _.clone(v)));
   });
-  this.registerHandler('AfterFeature', () => {
-    cukeContext = 'universe';
-    currentFeature = {};
-  });
+  this.registerHandler('AfterFeature', () => (currentFeature = {}));
   this.Before(() => {
     cukeContext = 'scenario';
     currentScenario = {};
     _.forIn(currentFeature, (v, k) => (currentScenario[k] = _.clone(v)));
   });
-  this.After(() => {
-    cukeContext = 'feature';
-    currentScenario = {};
-  });
+  this.After(() => (currentScenario = {}));
   isInitialized = true;
 };
 

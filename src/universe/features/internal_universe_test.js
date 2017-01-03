@@ -100,7 +100,7 @@ const internalUniverseTest = function () {
   this.registerHandler('AfterFeatures', () => {
     // BEWARE: "get" functions may return their last altered scenario values in "AfterFeatures".
     // You should to use "universeGet" to see the untouched universe values.
-    expect(getCukeContext()).to.equal('universe');
+    expect(getCukeContext()).to.equal('scenario');
     expect(universeGet('myScenarioKey2'), 'scenario value was not set in universe').to.be.undefined;
     expect(get('myUniverseKey1'), 'simple get from a universe value').to.equal('myUniverseValue1');
   });

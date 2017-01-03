@@ -96,7 +96,7 @@ Feature: Cleaner Request/Response Steps
       | [ _.isString, /\w+\s\w+/ ] |
 ```
 
-Interested? Yeah, we're just getting started, but before we get into some details here's some ...
+Interested? Yeah, we're just getting started, but before we get into some details, here's some ...
 
 ### Conventions
 

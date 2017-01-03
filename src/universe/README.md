@@ -8,7 +8,7 @@ The universe module is comparable to the Cucumber World object, but it's entirel
 
 If you're ever confused about the state of the Universe you can insert [diagnostic steps](../diagnostic_steps.js) into your feature files to inspect all or part of the universe/feature/scenario state.
 
-Use GetSet [steps](../getset_steps.js) and [support(src/getset_support.js) for general access to the `_cukeserv` universe namespace and associated steps.
+Use GetSet [steps](../getset_steps.js) and [support](src/getset_support.js) for general access to the `_cukeserv` universe namespace and associated steps.
 
 **Note.** The universe should be initialized before any any hooks or steps that use the `cukeserv` facilities.
 You mostly don't need to worry about this because this is generally done automatically by the service's `initialize` functions, and they will complain if it isn't initialized.

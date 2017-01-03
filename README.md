@@ -96,7 +96,7 @@ Feature: Cleaner Request/Response Steps
       | [ _.isString, /\w+\s\w+/ ] |
 ```
 
-Interested?  Ok let's get into some details, but first some...
+Interested? Yeah, we're just getting started, but before we get into some details here's some ...
 
 ### Conventions
 
@@ -112,8 +112,8 @@ And yes, it's possible and in fact typical, to launch multiple concurrent servic
 
 For the purposes of getting you started with testing quickly, I've made some non-dogmatic choices about the included step definitions.
 
-0. Step definitions are strictly decoupled from their support function code which are in separate respective `..._steps.js` and `..._support.js` files. This generally a good practice analogous to keeping views separate from business logic, but my main objective is to allow you to create your own more relevant and readable step definitions.
-0. The step definitions are intentionally terse. This is just a choice of simplicity over readability. Terse definitions are easier to write and easier to find, but again, you are free to write your own.
+0. Step definitions are strictly decoupled from their support function code which are in separate respective `..._steps.js` and `..._support.js` files. This generally a good practice analogous to keeping views separate from business logic, but my main objective is to allow you to customize your own more relevant and readable step definitions.
+0. The step definitions are intentionally terse. This is just a choice of simplicity over readability. Terse definitions are easier to write and easier to find, but again, you're free to customize your own.
 0. The step definitions use follow a strict convention with "Given" and "When" (setup) steps in present tense, and "Then" (assertion) steps in past tense. This is probably a good practice overall, but it's especially necessary for disambiguating terse definitions.
 0. [Postfix ... Not!](https://en.wikipedia.org/wiki/..._Not!) steps. The module includes a tool for creating a logical opposite assertion step from a given assertion step. The step definition is the same as the original with a suffix of '... Not!'. This is to be read out loud as if from [Wayne's World](https://youtu.be/BustEdWyqzk?t=2m34s).
 
@@ -125,7 +125,7 @@ For the purposes of getting you started with testing quickly, I've made some non
 3. [Child Service](src/child_service) launches shell executable servers as child processes of the cucumber process.
 4. [Embed Service](src/embed_service) launches NodeJS servers (e.g. `http.Server`) embedded within the cucumber process.
 5. [Knex Service](src/knex_service) connects to SQL databases via the [knex query builder](http://knexjs.org/).
-5. [Create Database Service](src/create_database_service) convenience service to create (and drop) feature databases.
+5. [Create Database Service](src/create_database_service) is a convenience service to create (and drop) feature databases.
 6. [Selenium Standalone Service](src/selenium_standalone_service) launches the selenium standalone server. This is included for completeness. Most likely you are managing your Selenium server separately.
 7. [WebdriverIO Service](src/webdriverio_service) launches the [WebdriverIO](http://webdriver.io/guide.html) Selenium interface as an embedded service within the cucumber process.
 8. [GetSet Steps](src/getset_steps.js) exposes access to the "universe" objects as cucumber steps.
@@ -145,3 +145,7 @@ For the purposes of getting you started with testing quickly, I've made some non
 ### Diagnostic Tips
 
 1. Run with environment variable cukelib_VERBOSITY set to 1, 2, or 3
+
+### Contributing
+
+**Thank You in Advance**  By all means submit issues, bug reports, suggestions, etc. to the github issues page.

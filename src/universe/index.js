@@ -31,13 +31,19 @@ const initialize = function () {
     currentFeature = {};
     _.forIn(universe, (v, k) => (currentFeature[k] = _.clone(v)));
   });
-  this.registerHandler('AfterFeature', () => (currentFeature = {}));
+  this.registerHandler('AfterFeature', () => {
+    cukeContext = 'universe';
+    currentFeature = {};
+  });
   this.Before(() => {
     cukeContext = 'scenario';
     currentScenario = {};
     _.forIn(currentFeature, (v, k) => (currentScenario[k] = _.clone(v)));
   });
-  this.After(() => (currentScenario = {}));
+  this.After(() => {
+    cukeContext = 'feature';
+    currentScenario = {};
+  });
   isInitialized = true;
 };
 

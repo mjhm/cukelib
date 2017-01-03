@@ -110,7 +110,7 @@ For the purposes of getting you started with testing quickly, I've made some non
 
 ### Library Details
 
-1. [Universe](src/utilities/README.md) manages a namespaced object which is copied from the "universe" scope to the feature scope for each new feature, and is copied from the feature scope to the scenario scope for each new scenario.
+1. [Universe](src/utilities/README.md) manages a namespaced object which is copied from the "universe" scope to the feature scope for each new feature, and is copied from the feature scope to the scenario scope for each new scenario. Most of the steps and service make use of the Universe for their internal state.
 2. [Service Control](src/service_control) is the abstract parent of all of the services.
 3. [Child Service](src/child_service) launches shell executable servers as child processes of the cucumber process.
 4. [Embed Service](src/embed_service) launches NodeJS servers (e.g. `http.Server`) embedded within the cucumber process.
@@ -120,7 +120,9 @@ For the purposes of getting you started with testing quickly, I've made some non
 7. [WebdriverIO Service](src/webdriverio_service) launches the [WebdriverIO](http://webdriver.io/guide.html) Selenium interface as an embedded service within the cucumber process.
 8. [GetSet Steps](src/getset_steps.js) exposes access to the "universe" objects as cucumber steps.
 9. [Request Steps](src/request_steps.js) provides cucumber steps for issuing http requests, usually to servers launched by the Child or Embed services.
+9. [Request Response Overview](src/REQUEST_RESPONSE.md)
 10. [Response Steps](src/response_steps.js) are for interpreting the results of Request Steps.
+10. [SQL Overview](src/SQL.md)
 11. [SQL Steps](src/sql_steps.js) provides steps for issuing and interpreting results of SQL commands issued through Knex Services.
 12. [Shell Steps](src/shell_steps.js) for running and interpreting output of shell scripts.
 13. [Diagnostic Steps](src/diagnostic_steps.js) for inspecting the state of the universe and debugging potential confusion.

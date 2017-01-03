@@ -1,4 +1,14 @@
 #  Cucumber Service Library -- A Starter Kit for API Testing
+[![NPM](https://nodei.co/npm/cukelib.png?downloads=true)](https://www.npmjs.com/package/cukelib)
+
+![CircleCI](https://circleci.com/gh/Originate/cukelib.svg?style=shield&circle-token=:circle-token)
+[![David Dependencies](https://david-dm.org/Originate/cukelib.svg)](https://david-dm.org/Originate/cukelib)
+[![David devDependencies](https://david-dm.org/Originate/cukelib/dev-status.svg)](https://david-dm.org/Originate/cukelib#info=devDependencies)
+
+Related Module:
+[![lodash-match-pattern](https://img.shields.io/npm/v/lodash-match-pattern.svg?label=lodash-match-pattern)](https://www.npmjs.com/package/lodash-match-pattern)
+
+
 
 I want to help you test your API's **right now** without having to think too much about launching services and writing steps. So what you're looking at is a toolbox of services and steps for testing API's using Cucumber. Features include:
 

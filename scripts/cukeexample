@@ -2,5 +2,6 @@
 
 echo testing example $1
 cd $1
+rm -rf node_modules
 npm install
 npm test

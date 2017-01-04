@@ -23,4 +23,4 @@ Feature: Finding and Counting Ads for Users
   Scenario: request more ads than exists in db
     Given POST "/users/1/ads"
       | count: 11 |
-    Then responded with status code "400"
+    Then responded with status code 400

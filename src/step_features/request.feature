@@ -4,8 +4,8 @@ Feature: HTTP Requests sent to the "echo_server"
     Given launch "echo" test server
 
   Scenario: A basic GET call
-    Given GET "/users"
-    Then responded with status code "200"
+    When GET "/users"
+    Then responded with status code 200
 
 
   Scenario: A basic PUT call matches a lodash-match-pattern
@@ -16,7 +16,7 @@ Feature: HTTP Requests sent to the "echo_server"
         "Billy Bad"
       ]
       """
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       """
       [
@@ -46,8 +46,8 @@ Feature: HTTP Requests sent to the "echo_server"
       | { rubber: '{{replaceBuggy}}', baby: /b\w+/ } |
 
   Scenario: A basic GET call with 401 status code doesn't match the step
-    Given GET "/users?statusCode=401"
-    Then responded with status code "402"... Not!
+    When GET "/users?statusCode=401"
+    Then responded with status code 402... Not!
 
 
   Scenario: A basic PUT call doesn't match a pattern

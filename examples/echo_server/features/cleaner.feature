@@ -4,6 +4,6 @@ Feature: Cleaner Request/Response Steps
     Given PUT "/losers"
       | [ Sally Sad, Billy Bad ] |
 
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       | [ _.isString, /\w+\s\w+/ ] |

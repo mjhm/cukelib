@@ -28,7 +28,7 @@ This tests a simple server that echos back it's request body. *([Apologies for G
 Feature: Super Simple Echo Server
 
   Scenario: A basic GET call just responds
-    Given GET "/users"
+    When GET "/users"
     Then responded with status code 200
 
 

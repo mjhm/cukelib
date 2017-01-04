@@ -22,14 +22,14 @@ All of these facilities are decoupled as much as possible. You can take what you
 
 ### [Simple Echo Server Example](examples/echo_server/features/echo.feature)
 
-This tests a simple server that echos back it's request body
+This tests a simple server that echos back it's request body. *([Apologies for Gherkin abuse.](customization.md#apology-for-my-gherkin-abuse))*
 
 ```gherkin
 Feature: Super Simple Echo Server
 
   Scenario: A basic GET call just responds
     Given GET "/users"
-    Then responded with status code "200"
+    Then responded with status code 200
 
 
   Scenario: A basic PUT call echos its input body
@@ -40,7 +40,7 @@ Feature: Super Simple Echo Server
         "Billy Bad"
       ]
       """
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       """
       [
@@ -91,7 +91,7 @@ Feature: Cleaner Request/Response Steps
     Given PUT "/losers"
       | [ Sally Sad, Billy Bad ] |
 
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       | [ _.isString, /\w+\s\w+/ ] |
 ```
@@ -110,11 +110,11 @@ And yes, it's possible and in fact typical, to launch multiple concurrent servic
 
 #### Step definitions conventions
 
-For the purposes of getting you started with testing quickly, I've made some non-dogmatic choices about the included step definitions.
+For the purposes of getting you started with testing quickly, I've made some non-dogmatic choices about the included step definitions. *([Apologies for Gherkin abuse.](customization.md#apology-for-my-gherkin-abuse))*
 
-0. Step definitions are strictly decoupled from their support function code which are in separate respective `..._steps.js` and `..._support.js` files. This generally a good practice analogous to keeping views separate from business logic, but my main objective is to allow you to customize your own more relevant and readable step definitions.
-0. The step definitions are intentionally terse. This is just a choice of simplicity over readability. Terse definitions are easier to write and easier to find, but again, you're free to customize your own.
-0. The step definitions follow a strict convention with "Given" and "When" (setup) steps in present tense, and "Then" (assertion) steps in past tense. This is probably a good practice overall, but it's especially necessary for disambiguating terse definitions.
+0. Step definitions are strictly decoupled from their support function code which are in separate respective `..._steps.js` and `..._support.js` files. This generally a good practice analogous to keeping views separate from business logic, but my main objective is to allow you to [customize](customization.md) your own more relevant and readable step definitions.
+0. The step definitions are intentionally terse. This is just a choice of simplicity over readability. Terse definitions are easier to write and easier to find, but again, you're free to [customize](customization.md) your own.
+0. The step definitions follow a strict convention with "Given" and "When" (setup) steps in present tense, and "Then" (assertion) steps in past tense. This is may be a good practice overall, but it's especially necessary for disambiguating terse definitions.
 0. [Postfix ... Not!](https://en.wikipedia.org/wiki/..._Not!) steps. The module includes a [tool](src/step_mods) for creating a logical opposite assertion steps from assertion steps. The step definition is the same as the original with a suffix of '... Not!'. This is to be read out loud as if from [Wayne's World](https://youtu.be/BustEdWyqzk?t=2m34s).
 
 

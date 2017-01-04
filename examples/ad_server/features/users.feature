@@ -2,13 +2,13 @@ Feature: UsersController CRUD operations
 
   Scenario: Verify all users
     When GET "/users"
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       | _.isSize\|3 |
     And response matched pattern
       """
       {
-        <=: {
+        <=: {             # The <= symbol indicates this pattern is applied to all array members
           id: _.isInteger,
           name: _.isString,
           created_at: _.isDateString,
@@ -20,7 +20,7 @@ Feature: UsersController CRUD operations
 
   Scenario: Verify one user
     When GET "/users/1"
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       | { id: 1, name: 'Don Draper', ... } |
 
@@ -28,7 +28,7 @@ Feature: UsersController CRUD operations
   Scenario: Update a user
     When PUT "/users/1"
       | { name: 'Dick Whitman' } |
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       | { id: 1, name: 'Dick Whitman', ... } |
 
@@ -36,7 +36,7 @@ Feature: UsersController CRUD operations
   Scenario: Create a user
     When POST "/users"
       | { name: 'Burt Cooper' } |
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       | { id: 4, name: 'Burt Cooper' ... } |
     When SQL query
@@ -46,7 +46,7 @@ Feature: UsersController CRUD operations
 
   Scenario: Destroy a user
     When DELETE "/users/3"
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       | { id: 3, name: 'Roger Sterling' ... } |
     When SQL query
@@ -56,7 +56,7 @@ Feature: UsersController CRUD operations
 
   Scenario: Try to verify an unknown user
     When GET "/users/99999"
-    Then responded with status code "404"
+    Then responded with status code 404
     And response matched pattern
       | null |
 
@@ -64,7 +64,7 @@ Feature: UsersController CRUD operations
   Scenario: Update a user with garbage
     When PUT "/users/1"
       | { garbage: 'huh' } |
-    Then responded with status code "500"
+    Then responded with status code 500
     And response matched pattern
       | null |
 
@@ -72,7 +72,7 @@ Feature: UsersController CRUD operations
   Scenario: Create a user with garbage
     When POST "/users"
       | { garbage: 'huh' } |
-    Then responded with status code "500"
+    Then responded with status code 500
     And response matched pattern
       | null |
 
@@ -80,7 +80,7 @@ Feature: UsersController CRUD operations
   Scenario: Update a user
     When PUT "/users/1"
       | { name: 'Dick Whitman' } |
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       | { id: 1, name: 'Dick Whitman', ... } |
 
@@ -88,13 +88,13 @@ Feature: UsersController CRUD operations
   Scenario: Try to update an unknown user
     When PUT "/users/9999"
       | { name: 'Pete Campbell' } |
-    Then responded with status code "404"
+    Then responded with status code 404
     And response matched pattern
       | null |
 
 
   Scenario: Try to delete an unknown user
     When DELETE "/users/99999"
-    Then responded with status code "404"
+    Then responded with status code 404
     And response matched pattern
       | null |

@@ -2,7 +2,7 @@ Feature: Super Simple Echo Server
 
   Scenario: A basic GET call just responds
     Given GET "/users"
-    Then responded with status code "200"
+    Then responded with status code 200
 
 
   Scenario: A basic PUT call echos its input body
@@ -13,7 +13,7 @@ Feature: Super Simple Echo Server
         "Billy Bad"
       ]
       """
-    Then responded with status code "200"
+    Then responded with status code 200
     And response matched pattern
       """
       [

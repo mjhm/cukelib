@@ -7,12 +7,18 @@ const exprestive = require('exprestive');
 const bodyParser = require('body-parser');
 const knex = require('knex');
 const knexfile = require('./knexfile');
+const cookieParser = require('cookie-parser');
+const passportSetup = require('./passport_setup');
 
 const app = express();
-const dbConn = knex(knexfile[app.get('env')]);
+app.use(cookieParser());
 app.use(bodyParser.json());
+const dbConn = knex(knexfile[app.get('env')]);
+const passport = passportSetup(dbConn);
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.use(exprestive({ dependencies: { dbConn } }));
+app.use(exprestive({ dependencies: { dbConn, passport } }));
 app.use((req, res) => {
   // eslint-disable-next-line no-console
   console.error('Request Not Found', req.method, req.url);

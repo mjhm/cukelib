@@ -1,7 +1,7 @@
 {
-  "name": "ad_server",
+  "name": "login_server",
   "version": "1.0.0",
-  "description": "Ad server example using a few tables in a postgres database",
+  "description": "Login example for a test user in a mysql database",
   "main": "index.js",
   "scripts": {
     "features": "NODE_ENV=features ./node_modules/.bin/cucumberjs",
@@ -10,14 +10,19 @@
   "author": "John McLaughlin",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.0",
     "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "exprestive": "^1.3.0",
+    "jsonwebtoken": "^7.2.1",
     "knex": "^0.12.6",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
-    "pg": "^6.1.2"
+    "mysql": "^2.12.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "cucumber": "^1.3.1",

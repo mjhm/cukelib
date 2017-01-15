@@ -1,44 +1,28 @@
-module.exports = class UsersController {
-  constructor({ dbConn }) {
+const { BaseController } = require('exprestive');
+
+module.exports = class UsersController extends BaseController {
+  constructor({ dbConn, passport }) {
+    super();
     this.dbConn = dbConn;
+    this.passport = passport;
+    this.useMiddleware(passport.authenticate('local'), { only: ['current'] });
   }
 
-  index(req, res, next) {
+  current(req, res, next) {
     return this.dbConn.select().from('users')
     .then(res.json.bind(res))
     .catch(next);
   }
 
-  show(req, res, next) {
-    return this.dbConn.first().from('users').where({ id: req.params.id })
-    .then((result) => {
-      if (!result) return res.sendStatus(404);
-      return res.json(result);
-    })
+  login(req, res, next) {
+    return this.dbConn.select().from('users')
+    .then(res.json.bind(res))
     .catch(next);
   }
 
-  update(req, res, next) {
-    return this.dbConn('users').update(req.body).where({ id: req.params.id }).returning('*')
-    .then((result) => {
-      if (!result || result.length === 0) return res.sendStatus(404);
-      return res.json(result[0]);
-    })
-    .catch(next);
-  }
-
-  create(req, res, next) {
-    return this.dbConn('users').insert(req.body).returning('*')
-    .then((result) => res.json(result[0]))
-    .catch(next);
-  }
-
-  destroy(req, res, next) {
-    return this.dbConn('users').del().where({ id: req.params.id }).returning('*')
-    .then((result) => {
-      if (!result || result.length === 0) return res.sendStatus(404);
-      return res.json(result[0]);
-    })
+  logout(req, res, next) {
+    return this.dbConn.select().from('users')
+    .then(res.json.bind(res))
     .catch(next);
   }
 };

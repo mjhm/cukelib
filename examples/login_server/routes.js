@@ -1,6 +1,6 @@
 /* eslint-disable new-cap */
-module.exports = ({ POST, resources }) => {
-  resources('users', { only: ['index', 'show', 'update', 'create', 'destroy'] });
-  resources('ads', { only: ['index', 'show', 'update', 'create', 'destroy'] });
-  POST('/users/:id/ads', { to: 'usersAds#requestAds' });
+module.exports = ({ GET, POST, resources }) => {
+  GET('/users/current', { to: 'users#current' });
+  POST('/users/login', { to: 'users#login' });
+  POST('/users/logout', { to: 'users#logout' });
 };

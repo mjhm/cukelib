@@ -28,11 +28,6 @@ app.use((err, req, res, next) => {
   return res.sendStatus(500);
 });
 
-//   isPostgresError =  /^\w{5}$/.test(err.code) or
-//     /Knex\: Timeout acquiring a connection/.test(err.message)
-//   res.sendStatus if isPostgresError then 503 else 500
-// router
-
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Example app listening on port ${port}!`);

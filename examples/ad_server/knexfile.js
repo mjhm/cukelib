@@ -2,7 +2,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'ad_server'
+      database: 'ad_server_development'
     }
   },
 

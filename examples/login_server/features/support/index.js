@@ -1,4 +1,6 @@
 /* eslint arrow-body-style: "off" */
+const Promise = require('bluebird');
+
 const {
   childService, requestSteps, responseSteps,
   knexService, sqlSteps, createDatabaseService,
@@ -14,17 +16,24 @@ module.exports = function () {
   sqlSteps.call(this);
 
   this.registerHandler('BeforeFeatures', () =>
-    createDatabaseService.launch(knexfile.features));
+    createDatabaseService.launch(knexfile.features)
+  );
 
-  this.Before(() =>
-    knexService.launch(knexfile.features)
-    .then(() =>
-      childService.spawn({
-        name: 'ad_server',
-        cmd: 'node',
-        args: [`${__dirname}/../../index.js`, '--port=3002'],
-      })
-    )
+  this.Before(() => {
+    return knexService.launch(knexfile.features)
+    // .then(() =>
+    //   childService.spawn({
+    //     name: 'login_server',
+    //     cmd: 'node',
+    //     args: [`${__dirname}/../../index.js`, '--port=3002'],
+    //   })
+    // )
+    .catch((err) => {
+      console.log('knexService err', err);
+      throw err;
+    });
+  }
+
   );
 };
 

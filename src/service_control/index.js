@@ -52,6 +52,7 @@ const serviceControl = {
   },
 
   stopService(name: string) {
+    log3('log3', 'serviceControl/stopService', name);
     const service = get(`_services.${name}`);
     if (!service) return Promise.resolve(`no service for ${name}`);
     unset(`_services.${name}`);
@@ -70,6 +71,7 @@ const serviceControl = {
   },
 
   launchService(name: string, start: () => Object) {
+    log3('log3', 'serviceControl/launchService', name);
     if (!get('_services')) {
       throw new Error('tried to launchService before service_control was initialized');
     }

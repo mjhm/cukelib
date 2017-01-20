@@ -145,7 +145,7 @@ For the purposes of getting you started with testing quickly, I've made some non
 
 ### Diagnostic Tips
 
-1. Run with environment variable cukelib_VERBOSITY set to 1, 2, or 3
+1. Run with environment variable CUKELIB_VERBOSITY set to 1, 2, or 3
 
 ### Contributing
 

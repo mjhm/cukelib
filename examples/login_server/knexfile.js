@@ -9,6 +9,7 @@ module.exports = {
   features: {
     client: 'mysql',
     connection: {
+      user: 'root',
       database: 'login_server_features'
     },
     migrations: {

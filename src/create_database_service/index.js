@@ -62,6 +62,15 @@ module.exports = serviceControl.addBoilerPlate('knex', {
       };
       return { name, stop, config: knexConfig };
     });
-    return serviceControl.launchService(`createDatabase.${name}`, start);
+    return serviceControl.launchService(`createDatabase.${name}`, start)
+    .catch((err) => {
+      if (err.code === 'ER_DBACCESS_DENIED_ERROR') {
+        const dbAccessError = new Error(`createDatabaseService: ${err.message}`);
+        _.assign(dbAccessError, _.pick(err, ['code', 'errno', 'sqlState']));
+        throw dbAccessError;
+      }
+      console.log('createDatabaseService err', err);
+      throw err;
+    });
   },
 });

@@ -54,6 +54,7 @@ module.exports = {
       let rowCount;
       if (!result) rowCount = 0;
       else if (_.isInteger(result.rowCount)) rowCount = result.rowCount; // postgres
+      // $FlowFixMe
       else if (mySqlData(result)) rowCount = mySqlData(result).length; // mysql
       else if (_.isArray(result)) rowCount = result.length; // sqlite
       else throw new Error(`Don't know how to parse row count from query result ${result}`);

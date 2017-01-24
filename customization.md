@@ -71,4 +71,4 @@ One of the main strengths of Gherkin is that the step specification language is 
 
 So I went in the other direction and pared down the step definitions to their barest minimum (mostly by killing articles, prepositions, and pronouns), focused on cleanly separating the step definitions from the support code, and made customization as easy as possible. I'm pretty happy with the result, and I think the documentation function of the steps for the intended audience of developers is actually improved by the terse style.
 
-However your context is surely different, so you are encouraged to use the support code to customize your step definitions for your needs.
+However your context is surely different, so you are encouraged to use the support code to customize your step definitions for your needs as shown above.

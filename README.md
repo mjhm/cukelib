@@ -8,9 +8,11 @@
 Related Module:
 [![lodash-match-pattern](https://img.shields.io/npm/v/lodash-match-pattern.svg?label=lodash-match-pattern)](https://www.npmjs.com/package/lodash-match-pattern)
 
-**Contributing** *This is a new library in active development. Bug reports, suggestion for improvement are welcome and should be submitted through [github issues](https://github.com/Originate/cukelib/issues)*.
+**Contributing** *This is a new library in active development. Bug reports, suggestion for improvement, etc. are welcome and should be submitted through [github issues](https://github.com/Originate/cukelib/issues)*.
 
-This library is here for you test your API's **right now** without having to think too much about launching services and writing steps. So what you're looking at is a toolbox of services and steps for testing API's using Cucumber. Features include:
+What you're looking at is a toolbox of services and steps for testing API's using Cucumber. The intent is for you to write tests for your API's **right now** without having to think too much about launching services and writing steps.
+
+Features include:
 
 1. Starting multiple servers with automatic stopping and clean up
 2. HTTP server request and response steps

@@ -4,7 +4,8 @@ const yaml = require('js-yaml');
 const handlebars = require('handlebars');
 const requestPromise = require('request-promise');
 const { parseStepArg } = require('./utilities');
-const { get, set, log, log3, initializeWith } = require('./universe').namespaceFactory('_cukelib');
+const { get, set, unset,
+  log, log3, initializeWith } = require('./universe').namespaceFactory('_cukelib');
 
 const requestCommon = (routeStr, options) => {
   const combinedOptions = _.defaults(options, get('_request.defaultOptions'));
@@ -14,14 +15,17 @@ const requestCommon = (routeStr, options) => {
   log3('log3', 'requestOptions', requestOptions);
   const responsePromise = requestPromise(requestOptions);
   set('_request.responsePromise', responsePromise);
-  responsePromise.then((result) => {
-    log('request headers', result.headers);
-    log('request body', result.body);
+  return responsePromise.then((result) => {
+    log('response headers', result.headers);
+    log('response body', result.body);
+    unset('_request.responsePromise');
+    set('_request.response', result);
+    return responsePromise;
   })
   .catch((err) => {
     log('err', err);
+    return responsePromise;
   });
-  return responsePromise;
 };
 
 const parseYamlBody = (bodyStr) => {
@@ -48,6 +52,7 @@ module.exports = {
           body: {},
           resolveWithFullResponse: true,
           json: true,
+          jar: true,
         }),
       },
     });
@@ -61,10 +66,16 @@ module.exports = {
   },
 
   requestPUT(routeStr: string, bodyStr: string|Object, options: Object = {}) {
-    return requestCommon(
+    const done = (typeof bodyStr === 'function') ? bodyStr : null;
+    const responsePromise = requestCommon(
       routeStr,
-      _.assign({ method: 'PUT', body: parseYamlBody(parseStepArg(bodyStr)) }, options)
+      _.assign({ method: 'PUT', body: done ? {} : parseYamlBody(parseStepArg(bodyStr)) }, options)
     );
+    if (done) {
+      responsePromise.asCallback(done);
+      return null;
+    }
+    return responsePromise;
   },
 
   requestDELETE(routeStr: string, options: Object = {}) {
@@ -75,9 +86,15 @@ module.exports = {
   },
 
   requestPOST(routeStr: string, bodyStr: string|Object, options: Object = {}) {
-    return requestCommon(
+    const done = (typeof bodyStr === 'function') ? bodyStr : null;
+    const responsePromise = requestCommon(
       routeStr,
-      _.assign({ method: 'POST', body: parseYamlBody(parseStepArg(bodyStr)) }, options)
+      _.assign({ method: 'POST', body: done ? {} : parseYamlBody(parseStepArg(bodyStr)) }, options)
     );
+    if (done) {
+      responsePromise.asCallback(done);
+      return null;
+    }
+    return responsePromise;
   },
 };

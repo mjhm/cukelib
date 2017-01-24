@@ -1,7 +1,7 @@
 var common = [
   '--compiler js:babel-register',
   '--strict',
-  '--format progress'
+  '--format pretty'
 ].join(' ')
 
 module.exports = {

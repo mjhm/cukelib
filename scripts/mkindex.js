@@ -3,7 +3,7 @@
 const fs = require('fs');
 const camelCase = require('lodash/camelCase');
 
-const excludes = ['utilities', 'step_features'];
+const excludes = ['step_features'];
 
 const run = () => {
   let indexStr = 'module.exports = {\n';

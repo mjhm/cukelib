@@ -1,4 +1,6 @@
 /* eslint-env mocha */
+/* eslint no-unused-expressions: "off" */
+
 // @flow
 const utilities = require('./');
 const { expect } = require('chai');
@@ -25,14 +27,13 @@ describe('lib/utilities', () => {
 
     it('passes through a dataTable object with more than one row', () => {
       const dtObj = { raw: () => [['abc'], ['def']] };
-      const parsed = utilities.parseStepArg(dtObj);
-      expect(parsed).to.equal(dtObj);
+      expect(utilities.parseStepArg.bind(utilities, dtObj)).to.throw;
     });
 
-    it('passes through a dataTable object with more than one column', () => {
+    it('merges multiple columns', () => {
       const dtObj = { raw: () => [['abc', 'def']] };
       const parsed = utilities.parseStepArg(dtObj);
-      expect(parsed).to.equal(dtObj);
+      expect(parsed).to.equal('abc|def');
     });
 
     it('extracts a solo data table element', () => {

@@ -69,7 +69,6 @@ module.exports = serviceControl.addBoilerPlate('knex', {
         _.assign(dbAccessError, _.pick(err, ['code', 'errno', 'sqlState']));
         throw dbAccessError;
       }
-      console.log('createDatabaseService err', err);
       throw err;
     });
   },

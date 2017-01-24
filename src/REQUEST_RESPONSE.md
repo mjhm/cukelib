@@ -10,6 +10,7 @@ The request steps and support functions wrap the standard [request](https://gith
   body: {},
   resolveWithFullResponse: true,
   json: true,
+  jar: true
 }
 ```
 

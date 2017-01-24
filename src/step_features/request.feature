@@ -45,6 +45,33 @@ Feature: HTTP Requests sent to the "echo_server"
     Then response matched pattern
       | { rubber: '{{replaceBuggy}}', baby: /b\w+/ } |
 
+  Scenario: Matching a literal text response
+    Given POST "/text/bounce"
+      | A line of text |
+    Then response matched text
+      | A line of text |
+
+  Scenario: Matching a text response with a regex
+    Given POST "/text/bounce"
+      | A line of text |
+    Then response matched text
+      | /.*\stext/ |
+
+
+  Scenario: Matching a literal text response Not!
+    Given POST "/text/bounce"
+      | A line of text |
+    Then response matched text. Not!
+      | A line of tex |
+
+  Scenario: Matching a text response with a regex Not!
+    Given POST "/text/bounce"
+      | A line of tex |
+    Then response matched text. Not!
+      | /.*\stext/ |
+
+
+
   Scenario: A basic GET call with 401 status code doesn't match the step
     When GET "/users?statusCode=401"
     Then responded with status code 402... Not!

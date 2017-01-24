@@ -26,7 +26,6 @@ module.exports = serviceControl.addBoilerPlate('knex', {
       log3('log3', 'knex_service/start', name);
       const dbConn = knex(knexConfig);
       if (knexConfig.migrations) {
-        yield Promise.delay(200);
         yield dbConn.migrate.latest();
       }
       if (knexConfig.seeds) {

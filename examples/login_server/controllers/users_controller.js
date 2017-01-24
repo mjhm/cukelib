@@ -1,28 +1,22 @@
-const { BaseController } = require('exprestive');
+const _ = require('lodash');
 
-module.exports = class UsersController extends BaseController {
-  constructor({ dbConn, passport }) {
-    super();
-    this.dbConn = dbConn;
-    this.passport = passport;
-    this.useMiddleware(passport.authenticate('local'), { only: ['current'] });
-  }
+module.exports = (dbConn) => (
+  {
+    current(req, res, next) {
+      return dbConn.first().from('users').where({ email: req.user.email })
+      .then((result) => res.json(_.omit(result, 'password_hash')))
+      .catch(next);
+    },
 
-  current(req, res, next) {
-    return this.dbConn.select().from('users')
-    .then(res.json.bind(res))
-    .catch(next);
-  }
+    login(req, res, next) {
+      return dbConn.from('users').update({ last_login: new Date() })
+      .then(() => res.sendStatus(200))
+      .catch(next);
+    },
 
-  login(req, res, next) {
-    return this.dbConn.select().from('users')
-    .then(res.json.bind(res))
-    .catch(next);
+    logout(req, res) {
+      req.logout();
+      return res.sendStatus(200);
+    },
   }
-
-  logout(req, res, next) {
-    return this.dbConn.select().from('users')
-    .then(res.json.bind(res))
-    .catch(next);
-  }
-};
+);

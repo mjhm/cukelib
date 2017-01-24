@@ -21,6 +21,7 @@ const knexService = require('cukelib/lib/knex_service');
 - `config.name` can be specified as an explicit name for the `cukelib` service identifier, otherwise the service name defaults to the database name from `config.connection.database` or a sequentially named identifier.
 - If `config.migrations.directory` or `config.seeds.directory` are specified the respective migrations or seeds are applied to the database when the service is launched, and the migrations are rolled back when the service stops.
 - `config` is merged with the following via `_.defaultdDeep`, so be sure to specify these values explicitly as needed
+- `config.debug` Set this to `true` to get a dump of attempted SQL commands
 ```javascript
   {
     client: 'sqlite3',

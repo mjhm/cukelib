@@ -9,7 +9,7 @@ let currentScenario = {};
 let isInitialized = false;
 let cukeContext = 'universe';
 
-const verbosity = _.clamp(_.toInteger(process.env.CUKESERV_VERBOSITY), 0, 3);
+const verbosity = _.clamp(_.toInteger(process.env.CUKELIB_VERBOSITY), 0, 3);
 
 /* eslint-disable no-console */
 const log3 = (verbosity >= 3) ? console.log.bind(console) : () => undefined;

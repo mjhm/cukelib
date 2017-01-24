@@ -9,10 +9,10 @@ module.exports = {
     let toCompile = stepArg;
     if (stepArg.raw) {
       const dataTable = stepArg.raw();
-      if (dataTable.length === 1 && dataTable[0].length === 1) {
-        toCompile = dataTable[0][0];
+      if (dataTable.length === 1) {
+        toCompile = dataTable[0].join('|');
       } else {
-        return stepArg;
+        throw new Error("This doesn't look like a single cell table.");
       }
     }
     return _.isString(toCompile) ? handlebars.compile(toCompile.trim())(get()) : stepArg;

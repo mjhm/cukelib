@@ -54,6 +54,7 @@
     "babel-eslint": "^6.1.2",
     "babel-plugin-transform-flow-strip-types": "^6.21.0",
     "babel-register": "^6.18.0",
+    "cookie-session": "^2.0.0-alpha.2",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -84,6 +85,7 @@
     "minimist": "^1.2.0",
     "randexp": "^0.4.3",
     "request": "^2.75.0",
-    "request-promise": "^4.1.1"
+    "request-promise": "^4.1.1",
+    "tough-cookie": "^2.3.2"
   }
 }

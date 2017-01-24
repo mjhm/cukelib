@@ -26,8 +26,10 @@ const createDatabaseService = require('cukelib/lib/create_database_service');
   {
     client: <(pg|mysql)>,
     connection: {
+      user: <db username> // needed for mysql -- in most cases 'root' will be the default
       database: <database name>
-    }
+    },
+    debug: true // include this to get SQL dumps if you run into trouble.
   }
 ```
 

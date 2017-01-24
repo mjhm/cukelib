@@ -1,10 +1,12 @@
 // @flow
+const chalk = require('chalk');
 const requestSteps = require('../request_steps');
 const responseSteps = require('../response_steps');
 const getSetSteps = require('../getset_steps');
 const diagnosticSteps = require('../diagnostic_steps');
 const { withThenNotSteps, withThrowSteps } = require('../step_mods');
 const childService = require('../child_service');
+const { log } = require('../universe').namespaceFactory('_cukelib');
 
 module.exports = function () {
   childService.initialize.call(this);
@@ -22,7 +24,10 @@ module.exports = function () {
       name: `${serverName}_server`,
       cmd: 'node',
       args: [`${__dirname}/../../test_servers/${serverName}_server.js`, '--port=3001'],
-      stdoutHandler: () => null,
+      stdoutHandler: (data) => {
+        // eslint-disable-next-line no-console
+        log(chalk.magenta(`${serverName}_server.stdout: ${data}`));
+      },
     })
   );
 };

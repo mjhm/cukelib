@@ -3,7 +3,7 @@ const _ = require('lodash');
 const Promise = require('bluebird');
 const tryRequire = require('../utilities/try_require');
 const serviceControl = require('../service_control');
-const { set } = require('../universe').namespaceFactory('_cukelib');
+const { set, log3 } = require('../universe').namespaceFactory('_cukelib');
 
 const knex = tryRequire('knex');
 
@@ -23,6 +23,7 @@ module.exports = serviceControl.addBoilerPlate('knex', {
       knexConfig.connection.database ||
       `database_${databaseCounter += 1}`;
     const start = Promise.coroutine(function* () {
+      log3('log3', 'knex_service/start', name);
       const dbConn = knex(knexConfig);
       if (knexConfig.migrations) {
         yield dbConn.migrate.latest();

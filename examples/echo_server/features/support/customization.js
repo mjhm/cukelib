@@ -15,12 +15,10 @@ module.exports = function () {
   this.When(/^making a GET request to "([^"]+)"$/, requestSupport.requestGET);
   this.When(/^making a PUT to "([^"]+)" with the payload:$/, requestSupport.requestPUT);
   this.Then(/^the API responds with status code (\d+)$/, responseSupport.statusCode);
-  this.Then(/^the API responds with the status code (\d+) and the payload:$/, (code, payload) =>
-      responseSupport.statusCode(code)
-      .then(() =>
-        responseSupport.matchPattern(payload)
-      )
-  );
+  this.Then(/^the API responds with the status code (\d+) and the payload:$/, (code, payload) => {
+    responseSupport.statusCode(code);
+    responseSupport.matchPattern(payload);
+  });
 
   this.Before(() => {
     return childService.spawn({

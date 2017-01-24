@@ -1,15 +1,16 @@
 module.exports = {
   development: {
-    client: 'postgresql',
+    client: 'mysql',
     connection: {
-      database: 'ad_server_development'
+      database: 'login_server'
     }
   },
 
   features: {
-    client: 'postgresql',
+    client: 'mysql',
     connection: {
-      database: 'ad_server_features'
+      user: 'root',
+      database: 'login_server_features'
     },
     migrations: {
       directory: './migrations',

@@ -10,7 +10,8 @@ module.exports = {
       "arrow-parens": ["error", "always"],
       "comma-dangle": ["off"],
       "yoda": ["error", "never", { "exceptRange": true }],
-      "arrow-body-style": ["warn", "as-needed"]
+      "arrow-body-style": ["warn", "as-needed"],
+      "newline-per-chained-call": ["off"]
     },
     "installedESLint": true,
     "plugins": [

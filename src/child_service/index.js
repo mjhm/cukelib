@@ -31,11 +31,16 @@ const childService = serviceControl.addBoilerPlate('child', {
     const spawnDefaultArgs = {
       args: [],
       options: {},
+      isReadyMatch: /./,
       isReady(proc) {
         return new Promise((resolve) => {
-          proc.stdout.once('data', (data) => {
-            resolve(data);
-          });
+          const resolveOnMatch = (data) => {
+            if (data.toString().match(spawnArgs.isReadyMatch)) {
+              resolve(data);
+              proc.stdout.removeListener('data', resolveOnMatch);
+            }
+          };
+          proc.stdout.on('data', resolveOnMatch);
         });
       },
       stderrHandler(data) {

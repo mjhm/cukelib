@@ -8,9 +8,9 @@
 Related Module:
 [![lodash-match-pattern](https://img.shields.io/npm/v/lodash-match-pattern.svg?label=lodash-match-pattern)](https://www.npmjs.com/package/lodash-match-pattern)
 
+**Contributing** *This is a new library in active development. Bug reports, suggestion for improvement are welcome and should be submitted through [github issues](https://github.com/Originate/cukelib/issues)*.
 
-
-I want to help you test your API's **right now** without having to think too much about launching services and writing steps. So what you're looking at is a toolbox of services and steps for testing API's using Cucumber. Features include:
+This library is here for you test your API's **right now** without having to think too much about launching services and writing steps. So what you're looking at is a toolbox of services and steps for testing API's using Cucumber. Features include:
 
 1. Starting multiple servers with automatic stopping and clean up
 2. HTTP server request and response steps
@@ -22,7 +22,7 @@ All of these facilities are decoupled as much as possible. You can take what you
 
 ### [Simple Echo Server Example](examples/echo_server/features/echo.feature)
 
-This tests a simple server that echos back it's request body. *([Note on exceptionally terse Gherkin.](customization.md))*
+This tests a simple server that echos back it's request body. *([Note on exceptionally terse Gherkin.](customization.md#note-on-exceptionally-terse-gherkin))*
 
 ```gherkin
 Feature: Super Simple Echo Server
@@ -110,7 +110,7 @@ And yes, it's possible and in fact typical, to launch multiple concurrent servic
 
 #### Step definitions conventions
 
-For the purposes of getting you started with testing quickly, I've made some non-dogmatic choices about the included step definitions. *([Note on terse Gherkin.](customization.md#apology-for-my-gherkin-abuse))*
+For the purposes of getting you started with testing quickly, I've made some non-dogmatic choices about the included step definitions. *([Note on terse Gherkin.](customization.md#note-on-exceptionally-terse-gherkin))*
 
 0. Step definitions are strictly decoupled from their support function code which are in separate respective `..._steps.js` and `..._support.js` files. This generally a good practice analogous to keeping views separate from business logic, but my main objective is to allow you to [customize](customization.md) your own more relevant and readable step definitions.
 0. The step definitions are intentionally terse. This is just a choice of simplicity over readability. Terse definitions are easier to write and easier to find, but again, you're free to [customize](customization.md) your own.

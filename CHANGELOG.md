@@ -5,3 +5,4 @@
 * Add to `responseSupport` for headers and cookies steps.
 * Fix bug with single line patterns with matchers that used "|" arguments.
 * Allow `requestPUT` and `requestPOST` to take an empty body.
+* Better support for MySQL

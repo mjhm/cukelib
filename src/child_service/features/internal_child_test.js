@@ -35,9 +35,14 @@ const isAlive = (pid) => {
 };
 
 
+// This sets up a bunch of server instances to be launched
+// at different stages of the testing process. It tests that the processes
+// are alive at the right times and killed at the right times
+
 const internalServerTest = function () {
   initialize.call(this);
 
+  // Start the "myUniverseServer"
   this.registerHandler('BeforeFeatures', () =>
     spawnPidServer(3001)
     .then(() => requestPromise('http://localhost:3001'))
@@ -50,18 +55,21 @@ const internalServerTest = function () {
     })
   );
 
+  // Start the "myFeatureServer"
   this.registerHandler('BeforeFeature', () => {
     expect(isAlive(testNS.get('myUniverseServer')), 'universe server is alive').to.be.true;
+
+    // Check that subsequent feature startups actually kill the previous "myFeatureServer"
     testNS.set('myPreviousFeatureServer', testNS.get('myFeatureServer'));
     if (testNS.get('myPreviousFeatureServer')) {
       expect(isAlive(testNS.get('myPreviousFeatureServer')), 'previous feature server is dead')
         .to.be.false;
     }
-    // TODO add recordPID here to be checked later
     return spawnPidServer(3002)
       .then(() => testNS.set('myFeatureServer', get('_services.pidServer3002').proc.pid));
   });
 
+  // Start the "myScenarioServer" and other stuff
   this.Before(() => {
     expect(isAlive(testNS.get('myUniverseServer')), 'universe server is alive').to.be.true;
     expect(isAlive(testNS.get('myFeatureServer')), 'feature server is alive').to.be.true;
@@ -78,6 +86,7 @@ const internalServerTest = function () {
       .then(() => testNS.set('myScenarioServer', get('_services.pidServer3003').proc.pid));
   });
 
+  // Start "myGivenServer" within an actual step
   this.Given(/spawn server/, () => {
     expect(isAlive(testNS.get('myUniverseServer')), 'universe server is alive').to.be.true;
     expect(isAlive(testNS.get('myFeatureServer')), 'feature server is alive').to.be.true;
@@ -87,6 +96,7 @@ const internalServerTest = function () {
       .then(() => testNS.set('myGivenServer', get('_services.pidServer3004').proc.pid));
   });
 
+  // Step to check that the specified server is still viable
   this.Then(/check server "([^"]+)"$/, (serverName) => {
     const server = get(`_services.${serverName}`);
     return requestPromise(`http://localhost:${server.config.pidServerPort}`)
@@ -96,7 +106,7 @@ const internalServerTest = function () {
     });
   });
 
-  // This group is for checking that the child process exits when the parent process exits.
+  // These steps are for checking that the child process exits when the parent process exits.
   // We want to be sure that child processes aren't left hanging with open ports.
   this.Then(/^parent exited$/, () => {
     process.exit(0);

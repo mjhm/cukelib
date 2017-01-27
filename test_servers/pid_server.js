@@ -6,6 +6,10 @@ const minimist = require('minimist');
 
 const parsedArgs = minimist(process.argv);
 const port = parsedArgs.port || process.env.SERVER_PORT || 3000;
+const startSignal = parsedArgs.start_signal || `Server listening on: http://localhost:${port}`;
+const signalStream = parsedArgs.signal_stream || 'stdout';
 const server = http.createServer((req, res) => res.end(`${process.pid}`));
-// eslint-disable-next-line no-console
-server.listen(port, () => console.log(`Server listening on: http://localhost:${port}`));
+server.listen(port, () =>
+  // eslint-disable-next-line no-console
+  console[signalStream === 'stderr' ? 'error' : 'log'](startSignal)
+);

@@ -25,6 +25,17 @@ const killProcWhenOrphaned = function (proc, name) {
   return () => removeListenerList.map((rmListener) => rmListener());
 };
 
+const promiseToResolveOnMatch = (stream, matchTarget) =>
+  new Promise((resolve) => {
+    const resolveOnMatch = (data) => {
+      if (data.toString().match(matchTarget)) {
+        resolve(data);
+        stream.removeListener('data', resolveOnMatch);
+      }
+    };
+    stream.on('data', resolveOnMatch);
+  });
+
 const childService = serviceControl.addBoilerPlate('child', {
   makeSpawnConfig(spawnArgs: Object) {
     if (!spawnArgs.name) throw new Error('name is a required argument');
@@ -33,15 +44,10 @@ const childService = serviceControl.addBoilerPlate('child', {
       options: {},
       isReadyMatch: /./,
       isReady(proc) {
-        return new Promise((resolve) => {
-          const resolveOnMatch = (data) => {
-            if (data.toString().match(spawnArgs.isReadyMatch)) {
-              resolve(data);
-              proc.stdout.removeListener('data', resolveOnMatch);
-            }
-          };
-          proc.stdout.on('data', resolveOnMatch);
-        });
+        return Promise.race([
+          promiseToResolveOnMatch(proc.stdout, spawnArgs.isReadyMatch),
+          promiseToResolveOnMatch(proc.stderr, spawnArgs.isReadyMatch),
+        ]);
       },
       stderrHandler(data) {
         // eslint-disable-next-line no-console

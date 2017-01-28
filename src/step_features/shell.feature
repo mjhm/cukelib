@@ -1,7 +1,7 @@
 Feature: Shell execution tests -- happy paths
 
   Scenario: test the output of a shell script
-    When shell script runs
+    When shell runs
       """
       echo abc 123
       echo def 456 | cat
@@ -17,8 +17,8 @@ Feature: Shell execution tests -- happy paths
       def 456
       """
 
-  Scenario: Catch error from a shell script
-    When shell script error is caught
+  Scenario: Skipping error from a shell script
+    When shell runs skipping errors
       """
       exit 47
       """
@@ -26,7 +26,7 @@ Feature: Shell execution tests -- happy paths
     Then shell error code was "0" ... Not!
 
   Scenario: Match output by a regex
-    When shell script runs
+    When shell runs
       """
       echo abc 123
       """
@@ -36,7 +36,7 @@ Feature: Shell execution tests -- happy paths
   Scenario: Match output by a template
     Given "myStringKey" is "abc"
     And "myNumberKey" is (456)
-    When shell script runs
+    When shell runs
       """
       echo abc 123
       echo def 456
@@ -49,7 +49,7 @@ Feature: Shell execution tests -- happy paths
 
   Scenario: Run and match one line strings
     Given "myStringKey" is "abc"
-    When shell script runs
+    When shell runs
       | echo abc 123 |
     Then STDOUT matched
       | {{myStringKey}} 123 |

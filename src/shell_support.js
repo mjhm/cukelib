@@ -22,7 +22,7 @@ const shellSupport = {
     });
   },
 
-  catchError(scriptStr: string|Object, done: Function) {
+  runSkipError(scriptStr: string|Object, done: Function) {
     shellSupport.runShell.call(this, scriptStr, () => done());
   },
 
@@ -32,6 +32,19 @@ const shellSupport = {
     set('_shell.error', null);
   },
 
+  inspectShellOutput() {
+    /* eslint-disable no-console */
+    console.log('STDOUT:');
+    console.log(get('_shell.STDOUT'));
+    console.log('STDERR:');
+    console.log(get('_shell.STDERR'));
+    const shellErr = get('_shell.error');
+    if (shellErr) {
+      console.log('Shell Error:');
+      console.log(shellErr);
+    }
+    /* eslint-enable no-console */
+  },
 
   resultEqual(stream: Stream, data: string|Object) {
     expect(get(`_shell.${stream}`).trim()).to.equal(parseStepArg(data));

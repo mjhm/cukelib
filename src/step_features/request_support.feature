@@ -1,4 +1,4 @@
-Feature: HTTP Requests sent to the "echo_server"
+Feature: requestSupport: HTTP Requests sent to the "echo_server" using custom PUT and POST steps
 
   Background: Setup server
     Given launch "echo" test server

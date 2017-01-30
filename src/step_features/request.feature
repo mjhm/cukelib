@@ -58,19 +58,28 @@ Feature: HTTP Requests sent to the "echo_server"
       | /.*\stext/ |
 
 
-  Scenario: Matching a literal text response Not!
+  Scenario: Not matching a literal text response
     Given POST "/text/bounce"
       | A line of text |
     Then response matched text. Not!
       | A line of tex |
 
-  Scenario: Matching a text response with a regex Not!
+  Scenario: Not matching a text response with a regex
     Given POST "/text/bounce"
       | A line of tex |
     Then response matched text. Not!
       | /.*\stext/ |
 
+  Scenario: POST request without a body
+    Given POST "/text/bounce"
+    Then response matched pattern
+      | {} |
 
+
+  Scenario: PUT request without a body
+    Given PUT "/text/bounce"
+    Then response matched pattern
+    | {} |
 
   Scenario: A basic GET call with 401 status code doesn't match the step
     When GET "/users?statusCode=401"

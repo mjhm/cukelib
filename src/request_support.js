@@ -67,9 +67,10 @@ module.exports = {
 
   requestPUT(routeStr: string, bodyStr: string|Object, options: Object = {}) {
     const done = (typeof bodyStr === 'function') ? bodyStr : null;
+    const bodyObj = _.isPlainObject(bodyStr) ? bodyStr : parseYamlBody(parseStepArg(bodyStr));
     const responsePromise = requestCommon(
       routeStr,
-      _.assign({ method: 'PUT', body: done ? {} : parseYamlBody(parseStepArg(bodyStr)) }, options)
+      _.assign({ method: 'PUT', body: done ? {} : bodyObj }, options)
     );
     if (done) {
       responsePromise.asCallback(done);
@@ -87,9 +88,10 @@ module.exports = {
 
   requestPOST(routeStr: string, bodyStr: string|Object, options: Object = {}) {
     const done = (typeof bodyStr === 'function') ? bodyStr : null;
+    const bodyObj = _.isPlainObject(bodyStr) ? bodyStr : parseYamlBody(parseStepArg(bodyStr));
     const responsePromise = requestCommon(
       routeStr,
-      _.assign({ method: 'POST', body: done ? {} : parseYamlBody(parseStepArg(bodyStr)) }, options)
+      _.assign({ method: 'POST', body: done ? {} : bodyObj }, options)
     );
     if (done) {
       responsePromise.asCallback(done);

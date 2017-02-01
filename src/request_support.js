@@ -1,3 +1,6 @@
+/**
+ * @module
+ */
 // @flow
 const _ = require('lodash');
 const yaml = require('js-yaml');
@@ -43,6 +46,20 @@ const parseYamlBody = (bodyStr) => {
 
 
 module.exports = {
+
+  /**
+   * Initializes the "request" defaults. Should be called in a context which
+   * contains the CucumberJS methods (`Given`, `Then`, `Before`, etc.)
+   *
+   * @example
+   * requestSupport.initialize.call(this, options);
+   *
+   * @param {object} [options={}] merged with
+   *   Merged with [standard defaults](request_support.js.html#sunlight-1-line-67)
+   *   to set request defaultOptions
+   *
+   * @returns undefined
+   */
   initialize(options: Object = {}) {
     initializeWith.call(this, {
       _request: {
@@ -59,6 +76,15 @@ module.exports = {
     });
   },
 
+
+  /**
+   * requestGET - Description
+   *
+   * @param {string}   routeStr     Description
+   * @param {object} [options={}] Description
+   *
+   * @returns {type} Description
+   */
   requestGET(routeStr: string, options: Object = {}) {
     return requestCommon(
       routeStr,
@@ -86,6 +112,22 @@ module.exports = {
     );
   },
 
+  /**
+   * Executes POST request to given `routeStr`
+   *
+   * `bodyStr`
+   *  - as a string will be interpreted as JSON and passed to the request.
+   *  - as an object with a `raw` property it is interpreted as a single tow cucumber table.
+   * The table contents are merged, interpreted as JSON and passed to the request.
+   *  - as a plainObject it is passsed directly to the request.
+   *  - as a function it is assumed to be a `done` callback and an empty body is sent to the request
+   *
+   * @param {string}   routeStr
+   * @param {string|object|function}   bodyStr
+   * @param {object} [options={}] Overides to the request defaults.
+   *
+   * @returns {Promise|null} Response promise from `request` or `null` for callback style calls.
+   */
   requestPOST(routeStr: string, bodyStr: string|Object, options: Object = {}) {
     const done = (typeof bodyStr === 'function') ? bodyStr : null;
     const responsePromise = requestCommon(

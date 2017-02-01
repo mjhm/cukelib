@@ -1,0 +1,41 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc","closure"]
+  },
+  "source": {
+    "include": [
+      "src/request_support.js",
+      "src/shell_support.js"
+    ],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_",
+    "exclude": []
+  },
+  "plugins": ["plugins/markdown", "node_modules/jsdoc-babel"],
+  "templates": {
+    "logoFile": "",
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "dateFormat": "ddd MMM Do YYYY",
+    "outputSourceFiles": true,
+    "outputSourcePath": true,
+    "systemName": "cukelib",
+    "footer": "",
+    "copyright": "",
+    "navType": "vertical",
+    "theme": "readable",
+    "linenums": true,
+    "collapseSymbols": false,
+    "inverseNav": true,
+    "protocol": "html://",
+    "methodHeadingReturns": false
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  },
+  "babel": {
+    "plugins": ["transform-flow-strip-types"]
+  }
+}

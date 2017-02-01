@@ -1,6 +1,6 @@
-# cukelib
 
-## Index
 
-0. [Module README](../../README.md)
-0. [Changelog](../../CHANGELOG.md)
+
+## cukelib module documentation
+
+### [back to github](https://github.com/Originate/cukelib)

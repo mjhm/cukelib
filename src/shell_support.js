@@ -1,3 +1,6 @@
+/**
+ * @module
+ */
 // @flow
 const _ = require('lodash');
 const expect = require('chai').expect;
@@ -7,11 +10,25 @@ const { get, set, initializeWith } = require('./universe').namespaceFactory('_cu
 
 type Stream = 'STDOUT' | 'STDERR';
 
-const shellSupport = {
+const shellSupport =
+module.exports = {
+
   initialize() {
     return initializeWith.call(this);
   },
 
+  /**
+   * Runs `scriptStr`` lines in a childProcess
+   *
+   * Results of the run are stored in the universe at
+   * `_shell.STDOUT`, `_shell.STDERR`, and `_shell.error`.
+   * In particular the status code of execution is in `_shell.error.code`
+   *
+   * @param {string} scriptStr shell script
+   * @param {function} done
+   *
+   * @returns undefined
+   */
   runShell(scriptStr: string|Object, done: Function) {
     const script = parseStepArg(scriptStr);
     childProcess.exec(script, (error, stdout, stderr) => {
@@ -64,5 +81,3 @@ const shellSupport = {
     expect(get(`_shell.${stream}`).trim()).to.equal(target);
   },
 };
-
-module.exports = shellSupport;

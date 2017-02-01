@@ -4,9 +4,9 @@
 ![CircleCI](https://circleci.com/gh/Originate/cukelib.svg?style=shield&circle-token=:circle-token)
 [![David Dependencies](https://david-dm.org/Originate/cukelib.svg)](https://david-dm.org/Originate/cukelib)
 [![David devDependencies](https://david-dm.org/Originate/cukelib/dev-status.svg)](https://david-dm.org/Originate/cukelib#info=devDependencies)
+Related [![lodash-match-pattern](https://img.shields.io/npm/v/lodash-match-pattern.svg?label=lodash-match-pattern)](https://www.npmjs.com/package/lodash-match-pattern)
 
-Related Module:
-[![lodash-match-pattern](https://img.shields.io/npm/v/lodash-match-pattern.svg?label=lodash-match-pattern)](https://www.npmjs.com/package/lodash-match-pattern)
+[Module Documentation](https://cdn.rawgit.com/Originate/cukelib/add-jsdoc/doc/jsdoc/index.html)
 
 **Contributing** *This is a new library in active development. Bug reports, suggestion for improvement, etc. are welcome and should be submitted through [github issues](https://github.com/Originate/cukelib/issues)*.
 

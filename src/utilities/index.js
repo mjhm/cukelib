@@ -1,10 +1,19 @@
+/**
+ * @module utilities
+ */
 const _ = require('lodash');
 const handlebars = require('handlebars');
 const { get } = require('../universe').namespaceFactory('_cukelib');
 
-// Parses a step argument so that it treats a single cell cucumber table as plain text,
-// and then evaluates it as a handlebars template using the cucumber _cukelib namespace object.
 module.exports = {
+  /**
+   * Parses a step argument so that it treats a single cell cucumber table as plain text,
+   * and then evaluates it as a handlebars template using the cucumber _cukelib namespace object.
+   *
+   * @param {string|Object} stepArg
+   *
+   * @returns {string}
+   */
   parseStepArg(stepArg) {
     let toCompile = stepArg;
     if (stepArg.raw) {

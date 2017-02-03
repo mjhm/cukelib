@@ -1,3 +1,6 @@
+/**
+ * @module serviceControl
+ */
 // @flow
 
 const _ = require('lodash');
@@ -21,7 +24,8 @@ const listServices = (serviceRoot: string, depth: number) => {
   return serviceList;
 };
 
-const serviceControl = {
+const serviceControl =
+module.exports = {
   serviceControlNS,
 
   addBoilerPlate(prefix: string, serviceObject: Object) {
@@ -66,6 +70,11 @@ const serviceControl = {
     throw new Error(`Don't know how to stop service "${name}"`);
   },
 
+  /**
+   * @param {string} name service name
+   *
+   * @returns {Object} universe service object root
+   */
   getService(name: string) {
     return get(`_services.${name}`);
   },
@@ -88,5 +97,3 @@ const serviceControl = {
     });
   },
 };
-
-module.exports = serviceControl;

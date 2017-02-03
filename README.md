@@ -6,9 +6,9 @@
 [![David devDependencies](https://david-dm.org/Originate/cukelib/dev-status.svg)](https://david-dm.org/Originate/cukelib#info=devDependencies)
 &nbsp;&nbsp;&nbsp;Related [![lodash-match-pattern](https://img.shields.io/npm/v/lodash-match-pattern.svg?label=lodash-match-pattern)](https://www.npmjs.com/package/lodash-match-pattern)
 
-[Module Documentation](https://rawgit.com/Originate/cukelib/add-jsdoc/doc/jsdoc/index.html)
+**[Module Documentation](https://rawgit.com/Originate/cukelib/add-jsdoc/doc/jsdoc/index.html)**
 
-**Contributing** *This is a new library in active development. Bug reports, suggestion for improvement, etc. are welcome and should be submitted through [github issues](https://github.com/Originate/cukelib/issues)*.
+**Contributing** *This is a new library in active development. Bug reports, suggestions for improvement, etc. are welcome and should be submitted through [github issues](https://github.com/Originate/cukelib/issues)*.
 
 What you're looking at is a toolbox of services and steps for testing API's using Cucumber. The intent is for you to write tests for your API's **right now** without having to think too much about launching services and writing steps.
 

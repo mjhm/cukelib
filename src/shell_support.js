@@ -1,5 +1,5 @@
 /**
- * @module
+ * @module shellSupport
  */
 // @flow
 const _ = require('lodash');
@@ -18,14 +18,17 @@ module.exports = {
   },
 
   /**
-   * Runs `scriptStr`` lines in a childProcess
+   * Runs `scriptStr` lines in a childProcess
    *
    * Results of the run are stored in the universe at
    * `_shell.STDOUT`, `_shell.STDERR`, and `_shell.error`.
    * In particular the status code of execution is in `_shell.error.code`
    *
+   * Note that the `STDOUT` ans `STDERR` result accumulate over multiple steps.
+   * Use {@link module:shell_support.resetShell|resetShell} to clear the previous results.
+   *
    * @param {string} scriptStr shell script
-   * @param {function} done
+   * @param {function} done childProcess completed callback
    *
    * @returns undefined
    */
@@ -39,10 +42,17 @@ module.exports = {
     });
   },
 
+  /**
+   * Same as {@link module:shell_support.runShell|runShell},
+   * but doesn't fail when the execution errors.
+   */
   runSkipError(scriptStr: string|Object, done: Function) {
     shellSupport.runShell.call(this, scriptStr, () => done());
   },
 
+  /** resets (clears) the shell STDERR and STDOUT universe variable.
+   * (Shell output is cumulative over multiple steps.)
+   */
   resetShell() {
     set('_shell.STDOUT', '');
     set('_shell.STDERR', '');

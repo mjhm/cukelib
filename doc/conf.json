@@ -6,7 +6,9 @@
   "source": {
     "include": [
       "src/request_support.js",
-      "src/shell_support.js"
+      "src/shell_support.js",
+      "src/utilities/index.js",
+      "src/service_control/index.js"
     ],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_",
@@ -24,7 +26,7 @@
     "footer": "",
     "copyright": "",
     "navType": "vertical",
-    "theme": "readable",
+    "theme": "cerulean",
     "linenums": true,
     "collapseSymbols": false,
     "inverseNav": true,

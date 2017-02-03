@@ -1,5 +1,6 @@
 /**
- * @module
+ * requestSupport
+ * @module requestSupport
  */
 // @flow
 const _ = require('lodash');

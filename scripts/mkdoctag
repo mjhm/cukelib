@@ -2,7 +2,7 @@
 
 CURTAG=`cat doc/doctag`
 NEWTAG=`date '+doctag%Y%m%d%H%M'`
-find . -name node_modules -prune -o -name doc -prune -o -name '*.md' -print -exec sed -i '' s/doctag[0-9]\*/$NEWTAG/g {} \;
+find . -name node_modules -prune -o -name doc -prune -o -name '*.md' -print -exec sed -i '' "s/doctag[0-9]*/$NEWTAG/g" {} \;
 
 echo $NEWTAG > doc/doctag
 git tag -d $CURTAG

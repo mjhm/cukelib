@@ -1,3 +1,6 @@
+/**
+ * @module shellSupport
+ */
 // @flow
 const _ = require('lodash');
 const expect = require('chai').expect;
@@ -7,11 +10,28 @@ const { get, set, initializeWith } = require('./universe').namespaceFactory('_cu
 
 type Stream = 'STDOUT' | 'STDERR';
 
-const shellSupport = {
+const shellSupport =
+module.exports = {
+
   initialize() {
     return initializeWith.call(this);
   },
 
+  /**
+   * Runs `scriptStr` lines in a childProcess
+   *
+   * Results of the run are stored in the universe at
+   * `_shell.STDOUT`, `_shell.STDERR`, and `_shell.error`.
+   * In particular the status code of execution is in `_shell.error.code`
+   *
+   * Note that the `STDOUT` ans `STDERR` result accumulate over multiple steps.
+   * Use {@link module:shell_support.resetShell|resetShell} to clear the previous results.
+   *
+   * @param {string} scriptStr shell script
+   * @param {function} done childProcess completed callback
+   *
+   * @returns undefined
+   */
   runShell(scriptStr: string|Object, done: Function) {
     const script = parseStepArg(scriptStr);
     childProcess.exec(script, (error, stdout, stderr) => {
@@ -22,10 +42,17 @@ const shellSupport = {
     });
   },
 
+  /**
+   * Same as {@link module:shell_support.runShell|runShell},
+   * but doesn't fail when the execution errors.
+   */
   runSkipError(scriptStr: string|Object, done: Function) {
     shellSupport.runShell.call(this, scriptStr, () => done());
   },
 
+  /** resets (clears) the shell STDERR and STDOUT universe variable.
+   * (Shell output is cumulative over multiple steps.)
+   */
   resetShell() {
     set('_shell.STDOUT', '');
     set('_shell.STDERR', '');
@@ -64,5 +91,3 @@ const shellSupport = {
     expect(get(`_shell.${stream}`).trim()).to.equal(target);
   },
 };
-
-module.exports = shellSupport;

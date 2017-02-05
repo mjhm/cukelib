@@ -1,6 +1,6 @@
 {
   "name": "cukelib",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Cucumber step definitions and service control for API testing",
   "main": "lib",
   "scripts": {
@@ -23,6 +23,7 @@
     "features_cuke1": "npm uninstall cucumber; npm install cucumber@1.3.1; npm run features",
     "features_cuke2": "npm uninstall cucumber; npm install cucumber@latest; npm run features",
     "test": "npm run lint && npm run flow && npm run spec && npm run features_cuke1 && npm run features_cuke2",
+    "jsdoc": "./node_modules/.bin/jsdoc -c doc/conf.json -t ./node_modules/ink-docstrap/template -r -R doc/index.md -d ./doc/jsdoc && mkdoctag",
     "prepublish": "rm -rf lib && ./node_modules/.bin/babel src --ignore features,spec.js --out-dir lib && ./scripts/mkindex.js"
   },
   "engines": {
@@ -62,6 +63,9 @@
     "eslint-plugin-react": "^6.8.0",
     "flow-bin": "^0.37.0",
     "http-proxy": "^1.15.2",
+    "ink-docstrap": "^1.3.0",
+    "jsdoc": "^3.4.3",
+    "jsdoc-babel": "^0.3.0",
     "knex": "^0.12.6",
     "mocha": "^3.1.2",
     "mysql2": "^1.1.2",

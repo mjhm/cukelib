@@ -19,7 +19,7 @@ const dbConn = knex(knexfile[app.get('env')]);
 const passport = passportSetup(dbConn);
 app.use(passport.initialize());
 app.use(passport.session());
-const { current, login, logout } = usersController(dbConn, passport);
+const { current, updateCurrent, changePassword, login, logout } = usersController(dbConn, passport);
 
 const checkAuth = (req, res, next) => {
   if (req.user) {
@@ -30,6 +30,8 @@ const checkAuth = (req, res, next) => {
 };
 
 app.get('/users/current', checkAuth, current);
+app.put('/users/current', checkAuth, updateCurrent);
+app.post('/users/change_password', checkAuth, changePassword);
 app.post('/login', passport.authenticate('local'), login);
 app.post('/logout', logout);
 

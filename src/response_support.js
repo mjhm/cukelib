@@ -55,8 +55,8 @@ const responseSupport = {
 
   getCookies() {
     const headers = get('_request.response.headers');
-    const cookiesArray = (headers['set-cookie'] instanceof Array) ?
-      headers['set-cookie'] : [headers['set-cookie']];
+    const setCookie = headers['set-cookie'] || [];
+    const cookiesArray = (setCookie instanceof Array) ? setCookie : [setCookie];
     return cookiesArray.map((cookie) => Cookie.parse(cookie).toJSON());
   },
 

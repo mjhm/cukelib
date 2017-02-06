@@ -1,13 +1,22 @@
 /* eslint arrow-body-style: "off" */
-const { AssertionError } = require('chai');
-const ldMatchPattern = require('lodash-match-pattern');
+
+const matchPattern = require('lodash-match-pattern');
 
 const {
-  childService, requestSteps, responseSteps, responseSupport,
+  childService, requestSteps, responseSteps,
   knexService, sqlSteps, createDatabaseService,
-  diagnosticSteps, parseStepArg
+  diagnosticSteps
 } = require('cukelib');
 const knexfile = require('../../knexfile');
+
+const _ = matchPattern.getLodashModule();
+
+_.mixin({
+  isBcyrptHash(elem) {
+    return /^\$2[aby]?\$[\d]+\$[./A-Za-z0-9]{53}$/.test(elem);
+  }
+});
+
 
 module.exports = function () {
   diagnosticSteps.call(this);
@@ -29,18 +38,9 @@ module.exports = function () {
         name: 'login_server',
         cmd: 'node',
         args: [`${__dirname}/../../index.js`, '--port=3002'],
+        stdoutHandler: () => null // quiet stdout for demo purposes
       })
-    )
-    .catch((err) => {
-      console.log('knexService err', err);
-      throw err;
-    });
-  });
-
-  this.Then(/^session cookie matched pattern$/, (targetPatternStr) => {
-    const targetPattern = parseStepArg(targetPatternStr);
-    const check = ldMatchPattern(responseSupport.getCookie('session'), targetPattern);
-    if (check) throw new AssertionError(check);
+    );
   });
 };
 

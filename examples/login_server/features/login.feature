@@ -8,7 +8,7 @@ Feature: Login / Logout
 
 
   Scenario: Login request and verify cookie and last_login timestamp in database
-    Given SQL query
+    When SQL query
       | SELECT last_login FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | [{ last_login: _.isSetAsMemo|last_login }] |
@@ -17,7 +17,7 @@ Feature: Login / Logout
     Then responded with status code 200
     And response cookie "session" matched pattern
       | { value: /[\w\/+]*/, path: '/', httpOnly: true, creation: _.isDateString } |
-    Given SQL query
+    When SQL query
       | SELECT last_login FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | [{ last_login: _.isNotEqualToMemo|last_login }] |
@@ -27,18 +27,6 @@ Feature: Login / Logout
       | { email: 'peggy@scdp.com', password: 'stanRizz0' } |
     When GET "/users/current"
     Then responded with status code 200
-    And response matched pattern
-      """
-      {
-        id: _.isInteger,
-        name: 'Peggy Olson',
-        email: 'peggy@scdp.com',
-        boss_id: _.isInteger,
-        last_login: _.isDateString,
-        created_at: _.isDateString,
-        updated_at: _.isDateString,
-      }
-      """
 
   Scenario: Logout destroys the cookie
     When POST "/login"

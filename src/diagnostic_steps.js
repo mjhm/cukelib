@@ -25,4 +25,6 @@ module.exports = function () {
 
   this.Then(/^inspect universe to depth (\d+)$/, (depth) =>
     console.log(util.inspect(universeGet(), { depth }))); // eslint-disable-line no-console
+
+  this.Given(/^PENDING$/, () => 'pending');
 };

@@ -12,17 +12,26 @@ const { get, set, unset,
   log, log3, initializeWith } = require('./universe').namespaceFactory('_cukelib');
 
 const requestCommon = (routeStr, options) => {
-  const combinedOptions = _.defaults(options, get('_request.defaultOptions'));
-  const url = handlebars.compile(`${combinedOptions.host}/${routeStr.replace(/^\//, '')}`)(get());
-  const requestOptions = _.defaults({ url }, _.omit(combinedOptions, 'host'));
-  set('_request.requestOptions', requestOptions);
+  // combine options
+  const requestOptions = _.defaults({}, options, get('_request.defaultOptions'));
+  // construct URL
+  const url = handlebars.compile(`${requestOptions.host}/${routeStr.replace(/^\//, '')}`)(get());
+  requestOptions.url = url;
+  delete requestOptions.host;
+  // get cookie jar
+  if (requestOptions.jar) {
+    requestOptions.jar = get('_requestCookieJar') ||
+      set('_requestCookieJar', requestPromise.jar());
+  }
+  // send request, log everything, capture response
+  set('_requestOptions', requestOptions);
   log3('log3', 'requestOptions', requestOptions);
   const responsePromise = requestPromise(requestOptions);
-  set('_request.responsePromise', responsePromise);
+  set('_requestResponsePromise', responsePromise);
   return responsePromise.then((result) => {
     log('response headers', result.headers);
     log('response body', result.body);
-    unset('_request.responsePromise');
+    unset('_requestResponsePromise');
     set('_request.response', result);
     return responsePromise;
   })

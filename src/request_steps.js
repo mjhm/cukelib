@@ -3,8 +3,8 @@ const requestSupport = require('./request_support');
 
 module.exports = function (options: Object) {
   requestSupport.initialize.call(this, options);
-  this.Given(/^GET "([^"]*)"$/, requestSupport.requestGET);
-  this.Given(/^PUT "([^"]*)"$/, requestSupport.requestPUT);
-  this.Given(/^POST "([^"]*)"$/, requestSupport.requestPOST);
-  this.Given(/^DELETE "([^"]*)"$/, requestSupport.requestDELETE);
+  this.When(/^GET "([^"]*)"$/, requestSupport.requestGET);
+  this.When(/^PUT "([^"]*)"$/, requestSupport.requestPUT);
+  this.When(/^POST "([^"]*)"$/, requestSupport.requestPOST);
+  this.When(/^DELETE "([^"]*)"$/, requestSupport.requestDELETE);
 };

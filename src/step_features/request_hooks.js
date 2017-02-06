@@ -1,3 +1,4 @@
+/* eslint arrow-body-style: "off" */
 // @flow
 const chalk = require('chalk');
 const requestSteps = require('../request_steps');

@@ -10,18 +10,17 @@ Feature: Verify database migration and seeds
       | SELECT * FROM users |
     Then SQL query result matched pattern
       """
-      [
-        {
+      {
+        <=: {
           id: _.isInteger,
-          name: 'Don Draper',
-          email: 'don@scdp.com',
-          password_hash: /\$2\w\$\d\d\$[\w\/\.\:\-\=]{53}$/,
-          boss_id: null,
+          name: _.isString,
+          email: _.isEmail,
+          password_hash: /^\$2[aby]?\$[\d]+\$[.\/A-Za-z0-9]{53}$/,
+          boss_id: _.isDefined,
           last_login: _.isDate,
           created_at: _.isDate,
           updated_at: _.isDate
-       },
-       { id: _.isInteger, name: 'Peggy Olson', ... }
-      ]
+       }
+     }
       """
-    Then SQL query had 2 rows
+    Then SQL query had 3 rows

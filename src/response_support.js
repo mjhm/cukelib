@@ -21,12 +21,12 @@ const responseSupport = {
   },
 
   statusCode(targetCode: string) {
-    expect(get('_request.response.statusCode')).to.equal(_.toInteger(targetCode));
+    expect(get('_requestResponse.statusCode')).to.equal(_.toInteger(targetCode));
   },
 
   matchPattern(targetPatternStr: string|Object) {
     const targetPattern = parseStepArg(targetPatternStr);
-    const body = get('_request.response.body');
+    const body = get('_requestResponse.body');
     const responseBody = (typeof body === 'object') ? body : jsonParseOrNull(body);
     const check = ldMatchPattern(responseBody, targetPattern);
     if (check) throw new AssertionError(check);
@@ -34,7 +34,7 @@ const responseSupport = {
 
   matchText(targetTextStr: string) {
     const targetText = parseStepArg(targetTextStr);
-    const body = get('_request.response.body');
+    const body = get('_requestResponse.body');
     const reMatch = targetText.match(/^\/(.*)\/([gimuy]*)$/);
     if (reMatch) {
       const re = new RegExp(reMatch[1], reMatch[2]);
@@ -48,13 +48,13 @@ const responseSupport = {
 
   headersMatchPattern(targetPatternStr: string|Object) {
     const targetPattern = parseStepArg(targetPatternStr);
-    const headers = get('_request.response.headers');
+    const headers = get('_requestResponse.headers');
     const check = ldMatchPattern(headers, targetPattern);
     if (check) throw new AssertionError(check);
   },
 
   getCookies() {
-    const headers = get('_request.response.headers');
+    const headers = get('_requestResponse.headers');
     const setCookie = headers['set-cookie'] || [];
     const cookiesArray = (setCookie instanceof Array) ? setCookie : [setCookie];
     return cookiesArray.map((cookie) => Cookie.parse(cookie).toJSON());

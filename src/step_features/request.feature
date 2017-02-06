@@ -9,7 +9,7 @@ Feature: HTTP Requests sent to the "echo_server"
 
 
   Scenario: A basic PUT call matches a lodash-match-pattern
-    Given PUT "/losers"
+    When PUT "/losers"
       """
       [
         "Sally Sad",
@@ -26,58 +26,58 @@ Feature: HTTP Requests sent to the "echo_server"
       """
 
   Scenario: One line request and response
-    Given POST "/bounce"
+    When POST "/bounce"
       | { rubber: 'buggy', baby: 'bumpers' } |
     Then response matched pattern
       | { rubber: _.isString, baby: /b\w+/ } |
 
   Scenario: Template request
     Given "replaceBuggy" is "bubby"
-    Given POST "/bounce"
+    When POST "/bounce"
       | { rubber: '{{replaceBuggy}}', baby: 'bumpers' } |
     Then response matched pattern
       | { rubber: 'bubby', baby: /b\w+/ } |
 
   Scenario: Template response
     Given "replaceBuggy" is "bubby"
-    Given POST "/bounce"
+    When POST "/bounce"
       | { rubber: 'bubby', baby: 'bumpers' } |
     Then response matched pattern
       | { rubber: '{{replaceBuggy}}', baby: /b\w+/ } |
 
   Scenario: Matching a literal text response
-    Given POST "/text/bounce"
+    When POST "/text/bounce"
       | A line of text |
     Then response matched text
       | A line of text |
 
   Scenario: Matching a text response with a regex
-    Given POST "/text/bounce"
+    When POST "/text/bounce"
       | A line of text |
     Then response matched text
       | /.*\stext/ |
 
 
   Scenario: Not matching a literal text response
-    Given POST "/text/bounce"
+    When POST "/text/bounce"
       | A line of text |
     Then response matched text. Not!
       | A line of tex |
 
   Scenario: Not matching a text response with a regex
-    Given POST "/text/bounce"
+    When POST "/text/bounce"
       | A line of tex |
     Then response matched text. Not!
       | /.*\stext/ |
 
   Scenario: POST request without a body
-    Given POST "/text/bounce"
+    When POST "/text/bounce"
     Then response matched pattern
       | {} |
 
 
   Scenario: PUT request without a body
-    Given PUT "/text/bounce"
+    When PUT "/text/bounce"
     Then response matched pattern
     | {} |
 
@@ -87,7 +87,7 @@ Feature: HTTP Requests sent to the "echo_server"
 
 
   Scenario: A basic PUT call doesn't match a pattern
-    Given POST "/mismatch"
+    When POST "/mismatch"
       """
       {
         "female": "Sally Sad",

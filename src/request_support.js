@@ -32,7 +32,7 @@ const requestCommon = (routeStr, options) => {
     log('response headers', result.headers);
     log('response body', result.body);
     unset('_requestResponsePromise');
-    set('_request.response', result);
+    set('_requestResponse', result);
     return responsePromise;
   })
   .catch((err) => {

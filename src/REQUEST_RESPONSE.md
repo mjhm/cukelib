@@ -16,6 +16,6 @@ The request steps and support functions wrap the standard [request](https://gith
 
 This can be overridden first by members of the object passed to the `requestSupport.initialize` function. Typically this will execute in a cucumber "Before" hook and is stashed in the `_request.defaultOptions` universe property. Then in individual steps, parameters can be further overridden. In particular most of the steps allow for the specification of `method`, `body` and by a `routeStr`. The `routeStr` is parsed and combined with the `host` to create the request `url`.
 
-The result of the request is a promise that is stored in the `_request.responsePromise` and the actual options passed are stashed in `_request.requestOptions`.
+The result of the request is a promise that is stored in the `_requestResponsePromise` and the actual options passed are stashed in `_requestOptions`.
 
-The response steps react to the result of the `_request.responsePromise`. In particular the `matchPattern` response function passes the response body to the specified `lodash-match-pattern` template.
+The response steps react to the result of the `_requestResponsePromise`. In particular the `matchPattern` response function passes the response body to the specified `lodash-match-pattern` template.

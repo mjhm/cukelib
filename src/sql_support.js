@@ -32,13 +32,13 @@ module.exports = {
     const currDb = get(`_services.knex.${currDbName}`);
     if (!currDb) throw new Error(`database ${currDbName} not found in "_services.knex"`);
     const query = parseStepArg(queryStr);
-    set('_sql.responsePromise', currDb.dbConn.raw(query));
-    return get('_sql.responsePromise');
+    set('_sqlResponsePromise', currDb.dbConn.raw(query));
+    return get('_sqlResponsePromise');
   },
 
   queryMatchPattern(targetPatternStr: string|Object) {
     const targetPattern = parseStepArg(targetPatternStr);
-    const respPromise = get('_sql.responsePromise');
+    const respPromise = get('_sqlResponsePromise');
     if (!respPromise) throw new Error('queryMatchPattern: no query response is defined');
     return respPromise.then((result) => {
       const resultToMatch = result.rows || mySqlData(result) || result;
@@ -48,7 +48,7 @@ module.exports = {
   },
 
   queryRowCount(targetCountStr: string) {
-    const respPromise = get('_sql.responsePromise');
+    const respPromise = get('_sqlResponsePromise');
     if (!respPromise) throw new Error('queryRowCount: no query response is defined');
     return respPromise.then((result) => {
       let rowCount;

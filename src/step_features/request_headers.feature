@@ -1,7 +1,7 @@
 Feature: HTTP Requests sent to the "echo_server"
 
   Background: Setup server
-    Given launch "echo" test server
+    When launch "echo" test server
 
   Scenario: A basic GET call
     When GET "/users"
@@ -9,7 +9,7 @@ Feature: HTTP Requests sent to the "echo_server"
 
 
   Scenario: Default headers
-    Given GET "/bounce"
+    When GET "/bounce"
     Then response headers matched pattern
       """
       {
@@ -23,7 +23,7 @@ Feature: HTTP Requests sent to the "echo_server"
       """
 
   Scenario: Set a cookie
-    Given POST "/set_cookie"
+    When POST "/set_cookie"
       | [ 'test_cookie', 'test_cookie_value' ] |
     Then response headers matched pattern
       | { 'set-cookie': [ 'test_cookie=test_cookie_value; Path=/', ], ... } |
@@ -46,7 +46,7 @@ Feature: HTTP Requests sent to the "echo_server"
 
 
   Scenario: Set multiple copies of a cookie
-    Given POST "/set_cookies"
+    When POST "/set_cookies"
       """
       [
         [ 'test_cookie', 'test_cookie_value' ],

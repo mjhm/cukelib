@@ -40,20 +40,20 @@ Feature: Demo of more advanced uses of lodash-match-pattern
 
 
   Scenario: Check that the user's last_login timetamp changes after login (print last_login)
-    Given SQL query
+    When SQL query
       | SELECT last_login FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | _.isPrinted |
 
 
   Scenario: Check that the user's last_login timetamp changes after login (print last_login)
-    Given SQL query
+    When SQL query
       | SELECT last_login FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | _.isPrinted |
 
   Scenario: Check that the user's last_login timetamp changes after login (print)
-    Given SQL query
+    When SQL query
       | SELECT last_login FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | [ { last_login: _.isSetAsMemo|last_login } ] |
@@ -64,27 +64,27 @@ Feature: Demo of more advanced uses of lodash-match-pattern
 
 
   Scenario: Check that change password changes the password hash (print password_hash)
-    Given SQL query
+    When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | _.isPrinted |
 
   Scenario: Check that change password changes the password hash (regex)
-    Given SQL query
+    When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | [ { password_hash: /^\$2[aby]?\$[\d]+\$[.\/A-Za-z0-9]{53}$/ } ] |
 
 
   Scenario: Check that change password changes the password hash (custom _.isBcryptHash)
-    Given SQL query
+    When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | [ { password_hash: _.isBcyrptHash } ] |
 
 
   Scenario: Check that change password changes the password hash (custom _.isBcryptHash)
-    Given SQL query
+    When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       """
@@ -100,7 +100,7 @@ Feature: Demo of more advanced uses of lodash-match-pattern
     And POST "/users/change_password"
       | { newPassword: 'teach the world to sing', oldPassword: 'stanRizz0' } |
     Then responded with status code 200
-    Given SQL query
+    When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       """

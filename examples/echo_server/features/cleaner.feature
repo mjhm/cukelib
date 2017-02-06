@@ -1,7 +1,7 @@
 Feature: Cleaner Request/Response Steps
 
   Scenario: A basic PUT call echos its input body
-    Given PUT "/losers"
+    When PUT "/losers"
       | [ Sally Sad, Billy Bad ] |
 
     Then responded with status code 200

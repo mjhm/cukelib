@@ -1,4 +1,12 @@
 
+#### 0.5.0
+
+* JSdoc
+* Fixes for unwanted persistence of some support variables
+* Fixes for a cookie bug
+* Demo features in login_server example
+* Misc cleanup in features
+
 #### 0.4.0
 
 * Clarified shell steps.

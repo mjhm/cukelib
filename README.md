@@ -10,7 +10,7 @@
 
 **Contributing** *This is a new library in active development. Bug reports, suggestions for improvement, etc. are welcome and should be submitted through [github issues](https://github.com/Originate/cukelib/issues)*.
 
-What you're looking at is a toolbox of services and steps for testing API's using Cucumber. The intent is for you to write tests for your API's **right now** without having to think too much about launching services and writing steps.
+What you're looking at is a toolbox of services and steps for testing API's using Cucumber. The intent is for you to write automated tests for your API's as fast or faster than running manual tests (e.g Postman).
 
 Features include:
 
@@ -20,9 +20,11 @@ Features include:
 4. Shell script testing steps
 6. ... and much more
 
+Several [self contained examples applications](examples) are included as well.
+
 All of these facilities are decoupled as much as possible. You can take what you like and leave the rest. So let's dive right in.
 
-### [Simple Echo Server Example](examples/echo_server/features/echo.feature)
+### [Simple Echo Server Example](examples/echo_server)
 
 This tests a simple server that echos back it's request body. *([Note on exceptionally terse Gherkin.](customization.md#note-on-exceptionally-terse-gherkin))*
 

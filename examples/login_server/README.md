@@ -23,5 +23,5 @@ npm run features features/demo1_users.feature:10
 Features demonstrated for cukelib include
 
 0. [Connecting to a MySQL database](./features/support/index.js#L35)
-0. [Launching a server via the childService]((./features/support/index.js#L37)
-0. [Setup of request, response, and SQL steps]((./features/support/index.js#L24)
+0. [Launching a server via the childService](./features/support/index.js#L37)
+0. [Setup of request, response, and SQL steps](./features/support/index.js#L24)

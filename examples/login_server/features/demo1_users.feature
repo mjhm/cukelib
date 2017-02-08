@@ -1,17 +1,19 @@
 Feature: Demo of basics of lodash-match-pattern
+Shows the workflow from printing out the results of HTTP request
+to the construction of non-brittle tests.
 
   Background:
     When POST "/login"
       | { email: 'peggy@scdp.com', password: 'stanRizz0' } |
 
 
-  Scenario: Test basic response of /users/current (print A)
+  Scenario: Test basic response of /users/current (just printing variation A)
     When GET "/users/current"
     Then response matched pattern
       | _.isPrinted |
 
 
-  Scenario: Test basic response of /users/current (print B)
+  Scenario: Test basic response of /users/current (just printing variation B)
     When GET "/users/current"
     Then response matched pattern
       """

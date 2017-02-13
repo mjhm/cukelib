@@ -11,7 +11,8 @@ module.exports = {
       "comma-dangle": ["off"],
       "yoda": ["error", "never", { "exceptRange": true }],
       "arrow-body-style": ["warn", "as-needed"],
-      "newline-per-chained-call": ["off"]
+      "newline-per-chained-call": ["off"],
+      "no-multi-assign": ["off"]
     },
     "installedESLint": true,
     "plugins": [

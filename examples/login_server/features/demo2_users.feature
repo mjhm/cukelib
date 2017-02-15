@@ -82,7 +82,6 @@ Feature: Demo of more advanced uses of lodash-match-pattern
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | [{ password_hash: _.isSetAsMemo|passwordHash }] |
-      """
     When POST "/login"
       | { email: 'peggy@scdp.com', password: 'stanRizz0' } |
     And POST "/users/change_password"

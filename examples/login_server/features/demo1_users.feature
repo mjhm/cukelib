@@ -34,7 +34,7 @@ to the construction of non-brittle tests.
         last_login: '2017-02-05T18:11:12.000Z',
         created_at: '2017-02-05T18:11:11.000Z',
         updated_at: '2017-02-05T18:11:11.000Z',
-        boss: { id: 1, name: 'Don Draper', email: 'don@scdp.com' } }
+        boss: { id: 1, name: 'Don Draper', email: 'don@scdp.com' }
       }
       """
 

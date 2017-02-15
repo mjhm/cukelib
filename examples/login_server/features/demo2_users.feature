@@ -46,12 +46,6 @@ Feature: Demo of more advanced uses of lodash-match-pattern
       | _.isPrinted |
 
 
-  Scenario: Check that the user's last_login timetamp changes after login (print last_login)
-    When SQL query
-      | SELECT last_login FROM users WHERE email='peggy@scdp.com' |
-    Then SQL query result matched pattern
-      | _.isPrinted |
-
   Scenario: Check that the user's last_login timetamp changes after login (print)
     When SQL query
       | SELECT last_login FROM users WHERE email='peggy@scdp.com' |
@@ -63,20 +57,20 @@ Feature: Demo of more advanced uses of lodash-match-pattern
       | [ { last_login: _.isNotEqualToMemo|last_login } ] |
 
 
-  Scenario: Check that change password changes the password hash (print password_hash)
+  Scenario: Check the password hash (just printing password_hash)
     When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | _.isPrinted |
 
-  Scenario: Check that change password changes the password hash (regex)
+  Scenario: Check the password hash (just checking with a regex)
     When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
       | [ { password_hash: /^\$2[aby]?\$[\d]+\$[.\/A-Za-z0-9]{53}$/ } ] |
 
 
-  Scenario: Check that change password changes the password hash (custom _.isBcryptHash)
+  Scenario: Check the password hash (custom _.isBcryptHash)
     When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
@@ -87,13 +81,7 @@ Feature: Demo of more advanced uses of lodash-match-pattern
     When SQL query
       | SELECT password_hash FROM users WHERE email='peggy@scdp.com' |
     Then SQL query result matched pattern
-      """
-      [{
-        password_hash: {
-          <-: _.isBcyrptHash,
-          <-: _.isSetAsMemo|passwordHash
-        }
-      }]
+      | [{ password_hash: _.isSetAsMemo|passwordHash }] |
       """
     When POST "/login"
       | { email: 'peggy@scdp.com', password: 'stanRizz0' } |

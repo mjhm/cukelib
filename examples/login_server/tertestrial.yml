@@ -1,0 +1,10 @@
+actions:
+
+  - match:
+      filename: '\.feature$'
+    command: 'npm run features {{filename}}'
+
+  - match:
+      filename: '\.feature$'
+      line: '\d+'
+    command: 'npm run features {{filename}}:{{line}}'

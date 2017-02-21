@@ -1,6 +1,6 @@
 {
   "name": "cukelib",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Cucumber step definitions and service control for API testing",
   "main": "lib",
   "scripts": {

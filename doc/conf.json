@@ -8,7 +8,8 @@
       "src/request_support.js",
       "src/shell_support.js",
       "src/utilities/index.js",
-      "src/service_control/index.js"
+      "src/service_control/index.js",
+      "src/child_service/index.js"
     ],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_",

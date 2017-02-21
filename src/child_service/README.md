@@ -22,7 +22,7 @@ const childService = require('cukelib/lib/child_service');
    - `name: string` The name of the cukelib service (required).
    - `cmd: string` Spawn command argument (required).
    - `args: [string]` Spawn args argument
-   - `options: Object` Spawn options argument
+   - `options: Object` [Spawn options argument (env, cwd, etc.)](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)
    - `isReadyMatch: string|RegExp` Pattern that is matched from stdout or stderr to indicate the child process is ready. Default `/./`
    - `isReady: (proc: childProcess) => Promise` the promise is resolved when the child process is ready. The default `isReady`  resolves when data from stdout or stderr matches the `isReadyMatch` pattern.
    - `stderrHandler: Function(data: string)` default is to print via `console.error(chalk.magenta(...))`

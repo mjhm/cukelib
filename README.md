@@ -1,14 +1,14 @@
 #  Cucumber Service Library -- A Toolbox for API Testing
 [![NPM](https://nodei.co/npm/cukelib.png?downloads=true)](https://www.npmjs.com/package/cukelib)
 
-![CircleCI](https://circleci.com/gh/Originate/cukelib.svg?style=shield&circle-token=:circle-token)
-[![David Dependencies](https://david-dm.org/Originate/cukelib.svg)](https://david-dm.org/Originate/cukelib)
-[![David devDependencies](https://david-dm.org/Originate/cukelib/dev-status.svg)](https://david-dm.org/Originate/cukelib#info=devDependencies)
+![CircleCI](https://circleci.com/gh/mjhm/cukelib.svg?style=shield&circle-token=:circle-token)
+[![David Dependencies](https://david-dm.org/mjhm/cukelib.svg)](https://david-dm.org/mjhm/cukelib)
+[![David devDependencies](https://david-dm.org/mjhm/cukelib/dev-status.svg)](https://david-dm.org/mjhm/cukelib#info=devDependencies)
 &nbsp;&nbsp;&nbsp;Related [![lodash-match-pattern](https://img.shields.io/npm/v/lodash-match-pattern.svg?label=lodash-match-pattern)](https://www.npmjs.com/package/lodash-match-pattern)
 
-**[Module Documentation](https://cdn.rawgit.com/Originate/cukelib/doctag201702201840/doc/jsdoc/index.html)**
+**[Module Documentation](https://cdn.rawgit.com/mjhm/cukelib/doctag201702201849/doc/jsdoc/index.html)**
 
-**Contributing** *This is a new library in active development. Bug reports, suggestions for improvement, etc. are welcome and should be submitted through [github issues](https://github.com/Originate/cukelib/issues)*.
+**Contributing** *This is a new library in active development. Bug reports, suggestions for improvement, etc. are welcome and should be submitted through [github issues](https://github.com/mjhm/cukelib/issues)*.
 
 What you're looking at is a toolbox of services and steps for testing API's using Cucumber. The intent is for you to write automated tests for your API's as fast or faster than running manual tests (e.g Postman).
 
@@ -153,4 +153,4 @@ For the purposes of getting you started with testing quickly, I've made some non
 
 ### Contributing
 
-**Thank You in Advance.**  By all means submit issues, bug reports, suggestions, etc. to the [github issues](https://github.com/Originate/cukelib/issues).
+**Thank You in Advance.**  By all means submit issues, bug reports, suggestions, etc. to the [github issues](https://github.com/mjhm/cukelib/issues).

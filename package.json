@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Originate/cukelib.git"
+    "url": "git+https://github.com/mjhm/cukelib.git"
   },
   "keywords": [
     "cucumber",
@@ -41,9 +41,9 @@
   "author": "John McLaughlin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Originate/cukelib/issues"
+    "url": "https://github.com/mjhm/cukelib/issues"
   },
-  "homepage": "https://github.com/Originate/cukelib#readme",
+  "homepage": "https://github.com/mjhm/cukelib#readme",
   "files": [
     "lib"
   ],
